@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/cardView3"
+    android:layout_width="120dp"
+    android:layout_height="180dp"
+    android:layout_margin="4dp"
+    app:cardCornerRadius="10dp"
+    app:cardElevation="5dp">
+
+    <LinearLayout
+        android:id="@+id/badgeLayout"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="end"
+        android:background="@drawable/badge_background"
+        android:backgroundTint="@color/greenHome">
+
+        <ImageView
+            android:id="@+id/imageView2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginStart="10dp"
+            android:layout_weight="1"
+            app:srcCompat="@drawable/ic_wallet" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:drawablePadding="@dimen/margin_5"
+            android:paddingStart="@dimen/margin_10"
+            android:paddingTop="@dimen/margin_5"
+            android:paddingEnd="@dimen/margin_10"
+            android:paddingBottom="@dimen/margin_5"
+            android:text="50"
+            android:textColor="@color/white"
+            app:drawableTint="@color/white"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+    </LinearLayout>
+
+    <Button
+        android:id="@+id/button"
+        android:layout_width="80dp"
+        android:layout_height="40dp"
+        android:layout_gravity="bottom|center_horizontal"
+        android:backgroundTint="#4CAF50"
+        android:text="Visit"
+        android:textAllCaps="false"
+        app:cornerRadius="20dp" />
+
+    <ImageView
+        android:id="@+id/gameImage"
+        android:layout_width="55dp"
+        android:layout_height="48dp"
+        android:layout_gravity="center"
+        android:adjustViewBounds="false"
+        android:contentDescription="@string/app_name"
+        android:foregroundGravity="center"
+        android:src="@mipmap/webdesign"
+        tools:ignore="MissingClass" />
+
+    <TextView
+        android:id="@+id/webLink"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content" />
+
+    <TextView
+        android:id="@+id/gameNAme"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom"
+        android:layout_marginBottom="50dp"
+        android:fontFamily="serif"
+        android:text="Candy Crush"
+        android:textAlignment="center"
+        android:textColor="#E91E63"
+        android:textSize="10dp"
+        android:textStyle="bold" />
+
+
+</androidx.cardview.widget.CardView>

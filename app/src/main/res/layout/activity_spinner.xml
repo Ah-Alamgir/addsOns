@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:LuckyWheel="http://schemas.android.com/apk/res-auto"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/btnSpin"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/spin_back"
+    android:gravity="center"
+    android:orientation="vertical"
+    tools:context=".Spinner"
+    tools:ignore="MissingClass">
+
+
+    <Button
+        android:id="@+id/Spin"
+        android:layout_width="150dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="24dp"
+        android:backgroundTint="#FE8F00"
+        android:text="Spin"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        LuckyWheel:layout_constraintEnd_toEndOf="parent"
+        LuckyWheel:layout_constraintStart_toStartOf="parent"
+        LuckyWheel:layout_constraintTop_toBottomOf="@+id/ivWheel" />
+
+    <ImageView
+        android:id="@+id/ivTarget"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="8dp"
+        LuckyWheel:layout_constraintBottom_toTopOf="@+id/ivWheel"
+        LuckyWheel:layout_constraintEnd_toEndOf="parent"
+        LuckyWheel:layout_constraintStart_toStartOf="parent"
+        LuckyWheel:srcCompat="@drawable/errow" />
+
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="24dp"
+        android:text="Check your luck"
+        android:textColor="@color/white"
+        android:textSize="25sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+
+    <ImageView
+        android:id="@+id/ivWheel"
+        android:layout_width="300dp"
+        android:layout_height="300dp"
+        android:layout_marginStart="55dp"
+        android:layout_marginEnd="56dp"
+        android:rotation="17"
+        LuckyWheel:layout_constraintBottom_toBottomOf="parent"
+        LuckyWheel:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView"
+        app:srcCompat="@drawable/spin_wheel" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "666961199446",
+    "project_id": "adons-b8d5a",
+    "storage_bucket": "adons-b8d5a.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:666961199446:android:35676f0b68236b224556f7",
+        "android_client_info": {
+          "package_name": "com.waskuroni.addons"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "666961199446-asfdbelqccjukoc5qh305dchcpv2d58c.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDCjAJ_WvkL1tylo8NdbDNGO5LRp52ug2k"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "666961199446-asfdbelqccjukoc5qh305dchcpv2d58c.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
