@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
@@ -32,7 +33,7 @@ public class signIn extends Activity {
     // [END declare_auth]
 
     private GoogleSignInClient mGoogleSignInClient;
-
+    EditText emails, passwords;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -40,7 +41,35 @@ public class signIn extends Activity {
 
 
         Button gogle = findViewById(R.id.google);
-        gogle.setOnClickListener(v -> signIn());
+        gogle.setOnClickListener(v -> autoLoad.signin());
+        emails = findViewById(R.id.emailSIgn);
+        passwords= findViewById(R.id.passwordSIgn);
+        Button login= findViewById(R.id.login);
+        Button resetPassword= findViewById(R.id.resetPassword);
+
+
+
+        login.setOnClickListener(v -> {
+            String email = emails.getText().toString();
+            String password = passwords.getText().toString();
+            if (!email.isEmpty() && !password.isEmpty()){
+                autoLoad.signin(email, password);
+            }{
+                Toast.makeText(signIn.this, "Please fill all fields", Toast.LENGTH_SHORT).show();
+            }
+        });
+
+
+        resetPassword.setOnClickListener(v -> {
+            String email = emails.getText().toString();
+            if (!email.isEmpty()){
+                autoLoad.resetPassword(email, this);
+            }{
+                Toast.makeText(signIn.this, "Please fill Email fields", Toast.LENGTH_SHORT).show();
+            }
+        });
+
+
 
 
 

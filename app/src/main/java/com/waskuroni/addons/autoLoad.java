@@ -1,8 +1,11 @@
 package com.waskuroni.addons;
 
 
+import static androidx.core.content.ContextCompat.startActivity;
+
 import android.annotation.SuppressLint;
 import android.app.Activity;
+import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageManager;
@@ -32,8 +35,15 @@ import com.google.android.gms.ads.interstitial.InterstitialAdLoadCallback;
 
 import com.google.android.gms.ads.rewarded.RewardedAd;
 import com.google.android.gms.ads.rewarded.RewardedAdLoadCallback;
+import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.android.gms.tasks.Task;
+import com.google.firebase.auth.AuthResult;
+import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.firestore.FirebaseFirestore;
+import com.waskuroni.addons.ui.UserModel;
 
 import java.util.ArrayList;
 import java.util.Objects;
@@ -294,6 +304,61 @@ public class autoLoad {
         DatabaseReference myRef = database.getReference("tikfan");
         myRef.child(userName).setValue(pluspoints);
         myRef.child(minusUser).setValue(minusPoints);
+    }
+    
+    
+    public static void signup(String name,String phone, String email, String password, Context context  ){
+        
+        Task<AuthResult> firebaseAuth = FirebaseAuth.getInstance().createUserWithEmailAndPassword(email,password)
+                .addOnSuccessListener(new OnSuccessListener<AuthResult>() {
+                    @Override
+                    public void onSuccess(AuthResult authResult) {
+                        FirebaseFirestore firebaseFirestore = FirebaseFirestore.getInstance();
+                        firebaseFirestore.document(FirebaseAuth.getInstance().getUid())
+                                .set(new UserModel(name, phone, email, password))
+                    }
+                })
+                .addOnFailureListener(new OnFailureListener() {
+                    @Override
+                    public void onFailure(@NonNull Exception e) {
+                       
+                        Toast.makeText(context, e.getMessage(), Toast.LENGTH_SHORT).show();
+                    }
+                });
+    }
+    
+    
+    public static void signin(String email, String password, Context context){
+        Task<AuthResult> firebaseAuth = FirebaseAuth.getInstance().signInWithEmailAndPassword(email,password)
+              .addOnSuccessListener(new OnSuccessListener<AuthResult>() {
+                    @Override
+                    public void onSuccess(AuthResult authResult) {
+                        Toast.makeText(context, "Login Successful", Toast.LENGTH_SHORT).show();
+                    }
+                })
+              .addOnFailureListener(new OnFailureListener() {
+                    @Override
+                    public void onFailure(@NonNull Exception e) {
+                       
+                        Toast.makeText(context, e.getMessage(), Toast.LENGTH_SHORT).show();
+                    }
+                });
+    }
+    
+    public static void resetPassword(String email, Context context){
+        FirebaseAuth.getInstance().sendPasswordResetEmail(email)
+              .addOnSuccessListener(new OnSuccessListener<Void>() {
+                    @Override
+                    public void onSuccess(Void aVoid) {
+                        Toast.makeText(context, "Check email", Toast.LENGTH_LONG).show();
+                    }
+                })
+              .addOnFailureListener(new OnFailureListener() {
+                    @Override
+                    public void onFailure(@NonNull Exception e) {
+                        Toast.makeText(context, e.getMessage(), Toast.LENGTH_SHORT).show();
+                    }
+                });
     }
 
 }
