@@ -52,7 +52,6 @@ import com.google.firebase.auth.GoogleAuthProvider;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.firestore.FirebaseFirestore;
-import com.waskuroni.addons.ui.UserModel;
 
 import java.util.ArrayList;
 import java.util.Objects;
@@ -324,7 +323,7 @@ public class autoLoad {
                 .addOnSuccessListener(authResult ->
                         firebaseFirestore.collection("users")
                                 .document(authResult.getUser().getUid())
-                              .set(new UserModel(name, email, password, phone))
+                              .set(new signDetail(name, email, password, phone))
                               .addOnSuccessListener(aVoid -> {
                                   Toast.makeText(context, "Signup Successful", Toast.LENGTH_SHORT).show();
 

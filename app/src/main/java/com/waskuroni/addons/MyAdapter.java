@@ -2,16 +2,14 @@ package com.waskuroni.addons;
 
 import android.content.Context;
 import android.content.Intent;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 
 import androidx.annotation.NonNull;
+import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.RecyclerView;
-
-import com.squareup.picasso.Picasso;
-import com.waskuroni.addons.ui.MyViewHolder;
 
 import java.util.ArrayList;
 
@@ -37,6 +35,7 @@ public class MyAdapter extends RecyclerView.Adapter<MyViewHolder>{
         holder.itemView.setOnClickListener(v -> {
             webview.link = imageUrl.get(position);
             v.getContext().startActivity(new Intent(this.context, webview.class));
+
         });
     }
 
@@ -44,4 +43,24 @@ public class MyAdapter extends RecyclerView.Adapter<MyViewHolder>{
     public int getItemCount() {
         return imageUrl.size();
     }
+}
+
+
+
+
+
+class MyViewHolder extends RecyclerView.ViewHolder{
+    public ImageView imageView;
+    CardView cardView;
+
+    public MyViewHolder(@NonNull View itemView) {
+        super(itemView);
+        imageView = itemView.findViewById(R.id.games);
+        cardView = itemView.findViewById(R.id.cardView);
+    }
+
+
+
+
+
 }

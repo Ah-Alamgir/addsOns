@@ -1,9 +1,9 @@
-package com.waskuroni.addons.ui;
+package com.waskuroni.addons;
 
-public class UserModel {
+public class signDetail {
     public String name, email, password, phone;
 
-    public UserModel(String name, String email, String password, String phone) {
+    public signDetail(String name, String email, String password, String phone) {
         this.name = name;
         this.email = email;
         this.password = password;
