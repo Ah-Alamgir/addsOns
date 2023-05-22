@@ -41,7 +41,7 @@ public class signIn extends Activity {
 
 
         Button gogle = findViewById(R.id.google);
-        gogle.setOnClickListener(v -> autoLoad.signin());
+        gogle.setOnClickListener(v -> signIn());
         emails = findViewById(R.id.emailSIgn);
         passwords= findViewById(R.id.passwordSIgn);
         Button login= findViewById(R.id.login);
@@ -53,7 +53,7 @@ public class signIn extends Activity {
             String email = emails.getText().toString();
             String password = passwords.getText().toString();
             if (!email.isEmpty() && !password.isEmpty()){
-                autoLoad.signin(email, password);
+                autoLoad.signin(email, password, signIn.this);
             }{
                 Toast.makeText(signIn.this, "Please fill all fields", Toast.LENGTH_SHORT).show();
             }
@@ -114,7 +114,7 @@ public class signIn extends Activity {
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
 
-        // Result returned from launching the Intent from GoogleSignInApi.getSignInIntent(...);
+
         if (requestCode == RC_SIGN_IN) {
             Task<GoogleSignInAccount> task = GoogleSignIn.getSignedInAccountFromIntent(data);
             try {
@@ -122,8 +122,8 @@ public class signIn extends Activity {
                 GoogleSignInAccount account = task.getResult(ApiException.class);
                 firebaseAuthWithGoogle(account.getIdToken());
             } catch (ApiException e) {
-                // Google Sign In failed, update UI appropriately
-                Toast.makeText(this, "Google sign in failed", Toast.LENGTH_SHORT).show();
+                Log.d("faileds", e.getMessage());
+                Toast.makeText(this, "Google sign in failed"+ e.getMessage(), Toast.LENGTH_SHORT).show();
             }
         }
     }
@@ -142,8 +142,6 @@ public class signIn extends Activity {
                             FirebaseUser user = mAuth.getCurrentUser();
                             updateUI(user);
                         } else {
-                            // If sign in fails, display a message to the user.
-                            Log.w(TAG, "signInWithCredential:failure", task.getException());
                             updateUI(null);
                         }
                     }

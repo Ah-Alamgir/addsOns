@@ -35,11 +35,20 @@ import com.google.android.gms.ads.interstitial.InterstitialAdLoadCallback;
 
 import com.google.android.gms.ads.rewarded.RewardedAd;
 import com.google.android.gms.ads.rewarded.RewardedAdLoadCallback;
+import com.google.android.gms.auth.api.signin.GoogleSignIn;
+import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
+import com.google.android.gms.auth.api.signin.GoogleSignInClient;
+import com.google.android.gms.auth.api.signin.GoogleSignInOptions;
+import com.google.android.gms.common.api.ApiException;
+import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
+import com.google.firebase.auth.AuthCredential;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.auth.GoogleAuthProvider;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.firestore.FirebaseFirestore;
@@ -308,23 +317,23 @@ public class autoLoad {
     
     
     public static void signup(String name,String phone, String email, String password, Context context  ){
+        FirebaseAuth firebaseAuth = FirebaseAuth.getInstance();
+        FirebaseFirestore firebaseFirestore = FirebaseFirestore.getInstance();
         
-        Task<AuthResult> firebaseAuth = FirebaseAuth.getInstance().createUserWithEmailAndPassword(email,password)
-                .addOnSuccessListener(new OnSuccessListener<AuthResult>() {
-                    @Override
-                    public void onSuccess(AuthResult authResult) {
-                        FirebaseFirestore firebaseFirestore = FirebaseFirestore.getInstance();
-                        firebaseFirestore.document(FirebaseAuth.getInstance().getUid())
-                                .set(new UserModel(name, phone, email, password))
-                    }
-                })
-                .addOnFailureListener(new OnFailureListener() {
-                    @Override
-                    public void onFailure(@NonNull Exception e) {
-                       
-                        Toast.makeText(context, e.getMessage(), Toast.LENGTH_SHORT).show();
-                    }
-                });
+        firebaseAuth.createUserWithEmailAndPassword(email, password)
+                .addOnSuccessListener(authResult ->
+                        firebaseFirestore.collection("users")
+                                .document(authResult.getUser().getUid())
+                              .set(new UserModel(name, email, password, phone))
+                              .addOnSuccessListener(aVoid -> {
+                                  Toast.makeText(context, "Signup Successful", Toast.LENGTH_SHORT).show();
+
+
+                              })
+                              .addOnFailureListener(e -> Toast.makeText(context, e.getMessage(), Toast.LENGTH_SHORT).show())
+                        )
+
+                .addOnFailureListener(e -> Toast.makeText(context, e.getMessage(), Toast.LENGTH_SHORT).show());
     }
     
     
@@ -360,6 +369,11 @@ public class autoLoad {
                     }
                 });
     }
+
+
+
+
+
 
 }
 
