@@ -34,19 +34,18 @@ public class signIn extends Activity {
 
     private GoogleSignInClient mGoogleSignInClient;
     EditText emails, passwords;
+    Button login, resetPassword, gooleSign;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_sign_in);
 
 
-        Button gogle = findViewById(R.id.google);
-        gogle.setOnClickListener(v -> signIn());
-        emails = findViewById(R.id.emailSIgn);
-        passwords= findViewById(R.id.passwordSIgn);
-        Button login= findViewById(R.id.login);
-        Button resetPassword= findViewById(R.id.resetPassword);
-
+        emails = findViewById(R.id.em);
+        passwords = findViewById(R.id.pass);
+        login = findViewById(R.id.getIn);
+        resetPassword = findViewById(R.id.reset);
+        gooleSign = findViewById(R.id.googleSigns);
 
 
         login.setOnClickListener(v -> {

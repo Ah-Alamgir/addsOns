@@ -13,8 +13,7 @@ import android.widget.TextView;
 public class SignUp extends AppCompatActivity {
 
     EditText name, email, password, phone;
-    Button register;
-    Button googleSign;
+    Button register, googleSign, logPage;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -28,7 +27,7 @@ public class SignUp extends AppCompatActivity {
 
         register = findViewById(R.id.registers);
         googleSign = findViewById(R.id.googleSigns);
-
+        logPage=  findViewById(R.id.logspage);
 
         register.setOnClickListener(v -> {
             if (!name.getText().toString().isEmpty() && !phone.getText().toString().isEmpty() && !email.getText().toString().isEmpty() && !password.getText().toString().isEmpty()) {
@@ -38,6 +37,11 @@ public class SignUp extends AppCompatActivity {
 
         googleSign.setOnClickListener(v -> {
             finish();
+        });
+
+
+        logPage.setOnClickListener(v -> {
+            startActivity(new Intent(SignUp.this, signIn.class));
         });
     }
 

@@ -34,8 +34,14 @@
             android:icon="@drawable/menu_logout"
             android:title="Log Out" />
         <item
-            android:id="@+id/allWeb"
-            android:icon="@drawable/menu_featured_website"
-            android:title="ALl website" />
+            android:id="@+id/rate"
+            android:icon="@mipmap/star"
+            android:title="Rate Us" />
+
+
+        <item
+            android:id="@+id/share"
+            android:icon="@mipmap/sharing"
+            android:title="Rate Us" />
     </group>
 </menu>
