@@ -51,12 +51,11 @@ public class MyAdapter extends RecyclerView.Adapter<MyViewHolder>{
 
 class MyViewHolder extends RecyclerView.ViewHolder{
     public ImageView imageView;
-    CardView cardView;
+
 
     public MyViewHolder(@NonNull View itemView) {
         super(itemView);
         imageView = itemView.findViewById(R.id.games);
-        cardView = itemView.findViewById(R.id.cardView);
     }
 
 

@@ -15,7 +15,7 @@ public class splash extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_splash);
         ViewFlipper viewFlipper = findViewById(R.id.flip);
-        startActivity(new Intent(this, SignUp.class));
+        startActivity(new Intent(this, MainActivity.class));
         ImageButton nexts = findViewById(R.id.next);
         nexts.setOnClickListener(v -> {
             click= click+1;

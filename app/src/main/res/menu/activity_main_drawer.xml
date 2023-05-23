@@ -43,5 +43,11 @@
             android:id="@+id/share"
             android:icon="@mipmap/sharing"
             android:title="Rate Us" />
+
+
+        <item
+            android:id="@+id/About"
+            android:icon="@mipmap/about"
+            android:title="About US" />
     </group>
 </menu>
