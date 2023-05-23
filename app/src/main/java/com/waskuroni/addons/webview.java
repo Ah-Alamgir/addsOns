@@ -8,15 +8,27 @@ import android.webkit.WebView;
 public class webview extends AppCompatActivity {
 
     public static String link;
-
+    WebView webview;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_webview);
 
 
-        WebView webView = (WebView) findViewById(R.id.web);
-        webView.loadUrl(link);
+        webview =  findViewById(R.id.web);
+        webview.loadUrl(link);
+
+    }
+
+
+    @Override
+    public void onBackPressed() {
+        if (webview.canGoBack()) {
+            webview.goBack();
+        }else {
+            super.onBackPressed();
+            finish();
+        }
 
     }
 }

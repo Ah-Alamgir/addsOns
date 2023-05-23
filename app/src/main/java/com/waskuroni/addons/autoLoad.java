@@ -15,6 +15,7 @@ import android.widget.LinearLayout;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AlertDialog;
 
 
@@ -49,6 +50,9 @@ import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.auth.GoogleAuthProvider;
+import com.google.firebase.database.ChildEventListener;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.firestore.FirebaseFirestore;
@@ -371,6 +375,73 @@ public class autoLoad {
 
 
 
+
+
+
+
+
+
+
+
+    //Get Data to show on reclelar view
+
+
+
+    public static  ArrayList<String> instGame = new ArrayList<>();
+    public static ArrayList<String> webSite= new ArrayList<>();
+    public static ArrayList<String> home= new ArrayList<>();
+
+    public static void getdata(String bucket) {
+        DatabaseReference ref = FirebaseDatabase.getInstance().getReference(bucket);
+        ref.addChildEventListener(new ChildEventListener() {
+            @Override
+            public void onChildAdded(@NonNull DataSnapshot snapshot, @Nullable String s) {
+                String link = snapshot.getValue(String.class);
+                if(bucket == "web"){
+                    webSite.add(link);
+                } else if (bucket == "instantGame") {
+                    instGame.add(link);
+                }else if (bucket == "home"){
+                    home.add(link);
+                }
+
+            }
+
+            @Override
+            public void onChildChanged(@NonNull DataSnapshot snapshot, @Nullable String previousChildName) {
+
+            }
+
+            @Override
+            public void onChildRemoved(@NonNull DataSnapshot snapshot) {
+
+            }
+
+            @Override
+            public void onChildMoved(@NonNull DataSnapshot snapshot, @Nullable String previousChildName) {
+
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+
+
+        });
+
+        if(bucket == "web"){
+            getdata("home");
+        } else if (bucket== "home") {
+            getdata("instantGame");
+
+        }
+
+
+        Log.d("list", String.valueOf(webSite));
+        Log.d("list", String.valueOf(home));
+        Log.d("list", String.valueOf(instGame));
+    }
 
 
 
