@@ -1,13 +1,11 @@
 package com.waskuroni.addons;
 
 
-import static androidx.core.content.ContextCompat.startActivity;
-
 import android.annotation.SuppressLint;
 import android.app.Activity;
-import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
 import android.util.Log;
 import android.view.Gravity;
@@ -36,20 +34,9 @@ import com.google.android.gms.ads.interstitial.InterstitialAdLoadCallback;
 
 import com.google.android.gms.ads.rewarded.RewardedAd;
 import com.google.android.gms.ads.rewarded.RewardedAdLoadCallback;
-import com.google.android.gms.auth.api.signin.GoogleSignIn;
-import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
-import com.google.android.gms.auth.api.signin.GoogleSignInClient;
-import com.google.android.gms.auth.api.signin.GoogleSignInOptions;
-import com.google.android.gms.common.api.ApiException;
-import com.google.android.gms.tasks.OnCompleteListener;
-import com.google.android.gms.tasks.OnFailureListener;
-import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
-import com.google.firebase.auth.AuthCredential;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.auth.FirebaseUser;
-import com.google.firebase.auth.GoogleAuthProvider;
 import com.google.firebase.database.ChildEventListener;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -58,17 +45,16 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.firestore.FirebaseFirestore;
 
 import java.util.ArrayList;
-import java.util.Objects;
 
 
 public class autoLoad {
-    public static String userName = "@hanif", points = "500", followed = "@hanif, @tikfollow" ;
+    public static String userName = "@hanif";
+    public static int points = 500;
     static RewardedAd mRewardedAd;
     private static InterstitialAd mInterstitialAd;
     public static boolean connection = false;
     public static FirebaseDatabase database = FirebaseDatabase.getInstance();
-    public static ArrayList<String> nameList = new ArrayList<>();
-    public static ArrayList<String> follow = new ArrayList<>();
+
     static boolean isLoading, isRewarded = false, RewardShowing = false;
 
 
@@ -238,16 +224,7 @@ public class autoLoad {
                 activity,
                 rewardItem -> {
                     int rewardAmount = rewardItem.getAmount();
-                    if (Objects.equals(screen, "doTask")){
-                        points = String.valueOf(Integer.parseInt(points)+rewardAmount);
-                        savedata(userName);
-
-                    } else if (Objects.equals(screen, "profile")) {
-                        points = String.valueOf(Integer.parseInt(points)+rewardAmount);
-                        savedata(userName);
-                    }else {
-                        isRewarded = true;
-                    }
+                    points  = points+ rewardAmount;
                 });
 
     }
@@ -284,24 +261,28 @@ public class autoLoad {
 
 
 
-    public static void getDatas() {
-        DatabaseReference myRef = database.getReference("tikfan");
+    public static int getPoints(String tags) {
+        final int[] result = {0};
+        DatabaseReference myRef = database.getReference("userPoints");
 
-
-        myRef.get().addOnCompleteListener(task -> {
+        myRef.child(tags).get().addOnCompleteListener(task -> {
             if (!task.isSuccessful()) {
                 Log.e("firebase", "Error getting data", task.getException());
-            } else {
-                String dict = String.valueOf(task.getResult().getValue());
+            }
+            else {
+                result[0] = (int) task.getResult().getValue();
 
             }
+
         });
+
+        return result[0];
     }
 
 
-    public static void savedata(String userName) {
-        DatabaseReference myRef = database.getReference("tikfan");
-        myRef.child(userName).setValue(Integer.valueOf(points));
+    public static void savePoints(String userNames, Integer pointses) {
+        DatabaseReference myRef = database.getReference("userPoints");
+        myRef.child(userNames).setValue(Integer.valueOf(pointses));
     }
 
 
@@ -330,7 +311,17 @@ public class autoLoad {
                               .set(new signDetail(name, email, password, phone))
                               .addOnSuccessListener(aVoid -> {
                                   Toast.makeText(context, "Signup Successful", Toast.LENGTH_SHORT).show();
+                                  String[] mail = email.split("@");
+                                  if (mail[0].contains(".")){
+                                      userName = mail[0].replace(".","*");
+                                  }else {
+                                      userName = mail[0];
+                                  }
+
+                                  points = 500;
+                                  savePoints(userName, points);
                                   context.startActivity(new Intent(context,MainActivity.class));
+                                  saveSharePref(userName, context);
 
 
                               })
@@ -343,36 +334,23 @@ public class autoLoad {
     
     public static void signin(String email, String password, Context context){
         Task<AuthResult> firebaseAuth = FirebaseAuth.getInstance().signInWithEmailAndPassword(email,password)
-              .addOnSuccessListener(new OnSuccessListener<AuthResult>() {
-                    @Override
-                    public void onSuccess(AuthResult authResult) {
-                        Toast.makeText(context, "Login Successful", Toast.LENGTH_SHORT).show();
-                        context.startActivity(new Intent(context, MainActivity.class));
-                    }
-                })
-              .addOnFailureListener(new OnFailureListener() {
-                    @Override
-                    public void onFailure(@NonNull Exception e) {
-                       
-                        Toast.makeText(context, e.getMessage(), Toast.LENGTH_SHORT).show();
-                    }
-                });
+              .addOnSuccessListener(authResult -> {
+                  String[] mail = email.split("@");
+                  if (mail[0].contains(".")){
+                      userName = mail[0].replace(".","*");
+                  }else {
+                      userName = mail[0];
+                  }
+                  Toast.makeText(context, "Login Successful", Toast.LENGTH_SHORT).show();
+                  saveSharePref(userName, context);
+              })
+              .addOnFailureListener(e -> Toast.makeText(context, e.getMessage(), Toast.LENGTH_SHORT).show());
     }
     
     public static void resetPassword(String email, Context context){
         FirebaseAuth.getInstance().sendPasswordResetEmail(email)
-              .addOnSuccessListener(new OnSuccessListener<Void>() {
-                    @Override
-                    public void onSuccess(Void aVoid) {
-                        Toast.makeText(context, "Check email", Toast.LENGTH_LONG).show();
-                    }
-                })
-              .addOnFailureListener(new OnFailureListener() {
-                    @Override
-                    public void onFailure(@NonNull Exception e) {
-                        Toast.makeText(context, e.getMessage(), Toast.LENGTH_SHORT).show();
-                    }
-                });
+              .addOnSuccessListener(aVoid -> Toast.makeText(context, "Check email", Toast.LENGTH_LONG).show())
+              .addOnFailureListener(e -> Toast.makeText(context, e.getMessage(), Toast.LENGTH_SHORT).show());
     }
 
 
@@ -446,6 +424,15 @@ public class autoLoad {
     }
 
 
+
+    public static void saveSharePref(String userName, Context context){
+
+        SharedPreferences pref = context.getSharedPreferences("MyPref", 0);
+        SharedPreferences.Editor editor = pref.edit();
+        editor.putString("name", userName);
+        editor.apply();
+        context.startActivity(new Intent(context, MainActivity.class));
+    }
 
 }
 

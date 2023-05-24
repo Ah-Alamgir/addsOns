@@ -84,11 +84,10 @@
                             app:layout_constraintVertical_chainStyle="packed"
                             app:layout_constraintStart_toStartOf="parent"
                             app:layout_constraintEnd_toEndOf="parent"
-                            app:layout_constraintTop_toTopOf="parent"
-                            app:layout_constraintBottom_toTopOf="@+id/textView_copy_referenceCode" />
+                            app:layout_constraintTop_toTopOf="parent" />
 
-                        <com.google.android.material.textview.MaterialTextView
-                            android:id="@+id/textView_copy_referenceCode"
+                        <Button
+                            android:id="@+id/copy"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:ellipsize="end"
@@ -97,9 +96,10 @@
                             android:textColor="@color/whiteAndDark"
                             android:textSize="14sp"
                             android:textStyle="bold"
-                            app:layout_constraintHorizontal_bias="0.5"
+                            app:cornerRadius="20dp"
                             app:layout_constraintBottom_toBottomOf="parent"
                             app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintHorizontal_bias="0.5"
                             app:layout_constraintStart_toStartOf="parent"
                             app:layout_constraintTop_toBottomOf="@+id/textView_referenceCode" />
 
