@@ -25,7 +25,11 @@ public class refetence extends AppCompatActivity {
                 int ponts= autoLoad.getPoints(code.getText().toString());
                 if(ponts>0) {
                     autoLoad.points = ponts + autoLoad.points;
+                    // giving points who is the author of the refer code
                     autoLoad.savePoints(code.getText().toString(), ponts+100);
+
+                    // Giving points to the person who inouted the code
+                    autoLoad.savePoints(autoLoad.userName,autoLoad.points);
                 }else {
                     Toast.makeText(this, "Invalid refer code", Toast.LENGTH_LONG).show();
                 }
