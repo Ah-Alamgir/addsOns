@@ -11,6 +11,8 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.Toast;
 
@@ -39,6 +41,59 @@ public class homes extends AppCompatActivity {
         toggle.syncState();
 
 
+        Button addclicked = findViewById(R.id.addclick);
+        Button profile = findViewById(R.id.profile);
+        Button ref = findViewById(R.id.refer);
+
+
+
+        addclicked.setOnClickListener(v -> startActivity(new Intent(this, playAds.class)));
+        ref.setOnClickListener(v -> startActivity(new Intent(this, refetence.class)));
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -48,10 +103,29 @@ public class homes extends AppCompatActivity {
             int id = item.getItemId();
 
             if(id == R.id.games){
-                Intent intent = new Intent(homes.this, instantGame.class);
-                startActivity(intent);
+                startActivity(new Intent(homes.this, instantGame.class));
             } else if (id == R.id.rate) {
                 startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse("https://play.google.com/store/apps/details?id="+ getPackageName())));
+            } else if (id == R.id.nav_home) {
+                drawerLayout.closeDrawers();
+            } else if (id == R.id.web) {
+                startActivity(new Intent(homes.this, visitWebsite.class));
+            } else if (id == R.id.refer) {
+                startActivity(new Intent(homes.this, ReferCOde.class));
+            } else if (id == R.id.Withdraw) {
+                startActivity(new Intent(homes.this, withdraw.class));
+            } else if (id == R.id.spinner) {
+                startActivity(new Intent(homes.this, Spinner.class));
+            } else if (id == R.id.share) {
+                Intent sendIntent = new Intent();
+                sendIntent.setAction(Intent.ACTION_SEND);
+                sendIntent.putExtra(Intent.EXTRA_TEXT, "Hey i am using this app and utilizing my free time. Give it a try to earn like me "+ "https://play.google.com/store/apps/details?id="+ getPackageName());
+                sendIntent.setType("text/plain");
+                startActivity(sendIntent);
+            } else if (id == R.id.About) {
+                startActivity(new Intent(homes.this, aboutUs.class));
+            } else if (id == R.id.web) {
+                startActivity(new Intent(homes.this, visitWebsite.class));
             }
 
             return false;
@@ -59,6 +133,10 @@ public class homes extends AppCompatActivity {
 
 
 
+        ImageButton infos = findViewById(R.id.info);
+        infos.setOnClickListener(view -> {
+            startActivity(new Intent(homes.this, aboutUs.class));
+        });
 
 
 

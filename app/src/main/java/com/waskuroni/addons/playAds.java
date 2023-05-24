@@ -13,7 +13,7 @@ public class playAds extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_play_ads);
-        TextView textView = (TextView) findViewById(R.id.conMainRoot);
+        TextView textView = findViewById(R.id.packName);
         textView.setText("Points::   " +String.valueOf(autoLoad.points));
 
 

@@ -374,7 +374,7 @@ public class autoLoad {
                 String link = snapshot.getValue(String.class);
                 if(bucket == "web"){
                     webSite.add(link);
-                } else if (bucket == "instantGame") {
+                }else if (bucket == "instantGame") {
                     instGame.add(link);
                 }else if (bucket == "home"){
                     home.add(link);
@@ -412,10 +412,6 @@ public class autoLoad {
 
         }
 
-
-        Log.d("list", String.valueOf(webSite));
-        Log.d("list", String.valueOf(home));
-        Log.d("list", String.valueOf(instGame));
     }
 
 

@@ -7,15 +7,1169 @@
     android:layout_height="match_parent"
     tools:context=".homes">
 
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical" >
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/cons"
+                android:layout_width="match_parent"
+                android:layout_height="250dp"
+                android:background="@drawable/side_nav_bar">
+
+                <ImageView
+
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
+                    android:layout_marginEnd="64dp"
+                    android:layout_marginBottom="8dp"
+                    android:src="@drawable/menu_user"
+                    app:layout_constraintBottom_toTopOf="@+id/addclick"
+                    app:layout_constraintEnd_toEndOf="parent" />
+
+                <Button
+                    android:id="@+id/profile"
+                    android:layout_width="110dp"
+                    android:layout_height="110dp"
+                    android:layout_margin="5dp"
+                    android:backgroundTint="@color/white"
+                    android:text="Profile"
+                    android:textAllCaps="false"
+                    android:textColor="#E91E63"
+                    app:cornerRadius="10dp"
+                    app:icon="@drawable/menu_user"
+                    app:iconGravity="textTop"
+                    app:iconSize="48dp"
+                    app:iconTintMode="multiply"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toStartOf="@+id/refer"
+                    app:layout_constraintHorizontal_bias="0.5"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:strokeColor="#D8D4D4"
+                    app:strokeWidth="2dp" />
+
+                <Button
+                    android:id="@+id/addclick"
+                    android:layout_width="110dp"
+                    android:layout_height="110dp"
+                    android:layout_gravity="bottom"
+                    android:layout_margin="5dp"
+                    android:backgroundTint="@color/white"
+                    android:text="Add Click"
+                    android:textAllCaps="false"
+                    android:textColor="#E91E63"
+                    app:cornerRadius="10dp"
+                    app:icon="@drawable/ad_click"
+                    app:iconGravity="textTop"
+                    app:iconSize="48dp"
+                    app:iconTintMode="multiply"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.5"
+                    app:layout_constraintStart_toEndOf="@+id/refer"
+                    app:strokeColor="#D8D4D4"
+                    app:strokeWidth="2dp" />
+
+                <Button
+                    android:id="@+id/refer"
+                    android:layout_width="110dp"
+                    android:layout_height="110dp"
+                    android:layout_margin="5dp"
+                    android:backgroundTint="@color/white"
+                    android:text="Refer"
+                    android:textAllCaps="false"
+                    android:textColor="#E91E63"
+                    app:cornerRadius="10dp"
+                    app:icon="@drawable/menu_refer"
+                    app:iconGravity="textTop"
+                    app:iconSize="48dp"
+                    app:iconTintMode="multiply"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toStartOf="@+id/addclick"
+                    app:layout_constraintHorizontal_bias="0.5"
+                    app:layout_constraintStart_toEndOf="@+id/profile"
+                    app:strokeColor="#D8D4D4"
+                    app:strokeWidth="2dp" />
+            </androidx.constraintlayout.widget.ConstraintLayout>
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:baselineAligned="false"
+                android:orientation="horizontal"
+                android:weightSum="3"
+                tools:ignore="UselessParent">
+
+                <RelativeLayout
+                    android:id="@+id/post2"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_gravity="bottom"
+                    android:layout_marginBottom="@dimen/margin_5"
+                    android:layout_weight="1"
+                    android:gravity="bottom"
+                    android:visibility="visible">
+
+                    <androidx.constraintlayout.widget.ConstraintLayout
+                        android:id="@+id/cLyt2"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerHorizontal="true">
+
+                        <RelativeLayout
+                            android:id="@+id/lyt2"
+                            android:layout_width="80dp"
+                            android:layout_height="80dp"
+                            android:layout_centerHorizontal="true"
+                            android:background="@drawable/gradient_round"
+                            app:layout_constraintBottom_toTopOf="@id/lyt2"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toTopOf="parent">
+
+                            <de.hdodenhof.circleimageview.CircleImageView
+                                android:id="@+id/imgPost2"
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:layout_centerInParent="true"
+                                android:layout_marginStart="4dp"
+                                android:layout_marginTop="4dp"
+                                android:layout_marginEnd="4dp"
+                                android:layout_marginBottom="4dp"
+                                android:src="@mipmap/archaeologist" />
+
+                        </RelativeLayout>
+
+                        <ImageView
+                            android:id="@+id/tvR2"
+                            android:layout_width="@dimen/margin_25"
+                            android:layout_height="@dimen/margin_25"
+                            android:layout_alignParentEnd="true"
+                            android:layout_margin="2dp"
+                            android:contentDescription="@string/app_name"
+                            android:gravity="end"
+                            android:src="@drawable/number_two"
+                            app:layout_constraintBottom_toBottomOf="@+id/lyt2"
+                            app:layout_constraintEnd_toEndOf="parent" />
+                    </androidx.constraintlayout.widget.ConstraintLayout>
+
+                    <TextView
+                        android:id="@+id/tvPost2"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/cLyt2"
+                        android:layout_marginTop="3dp"
+                        android:gravity="center"
+                        android:text="Aklima"
+                        android:textColor="@color/top_user_blue"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:id="@+id/tvScore2"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/tvPost2"
+                        android:gravity="center"
+                        android:text="1800"
+                        android:textColor="@color/blackAndBlue"
+                        android:textStyle="bold" />
+
+
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:id="@+id/lytRank1"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_marginBottom="@dimen/margin_15"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:visibility="visible">
+
+                    <ImageView
+                        android:id="@+id/crown"
+                        android:layout_width="wrap_content"
+                        android:layout_height="@dimen/margin_50"
+                        android:layout_centerHorizontal="true"
+                        android:contentDescription="@string/app_name"
+                        android:src="@drawable/crown_main" />
+
+                    <androidx.constraintlayout.widget.ConstraintLayout
+                        android:id="@+id/cLyt1"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/crown"
+                        android:layout_centerHorizontal="true">
+
+                        <RelativeLayout
+                            android:id="@+id/lyt1"
+                            android:layout_width="100dp"
+                            android:layout_height="100dp"
+                            android:layout_centerHorizontal="true"
+                            android:background="@drawable/gradient_round_red"
+                            app:layout_constraintBottom_toTopOf="@id/lyt1"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toTopOf="parent">
+
+                            <de.hdodenhof.circleimageview.CircleImageView
+                                android:id="@+id/imgPost1"
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:layout_centerInParent="true"
+                                android:layout_marginStart="4dp"
+                                android:layout_marginTop="4dp"
+                                android:layout_marginEnd="4dp"
+                                android:layout_marginBottom="4dp"
+                                android:src="@mipmap/man" />
+                        </RelativeLayout>
+
+                        <ImageView
+                            android:id="@+id/tvR1"
+                            android:layout_width="@dimen/margin_25"
+                            android:layout_height="@dimen/margin_25"
+                            android:layout_margin="4dp"
+                            android:contentDescription="@string/app_name"
+                            android:src="@drawable/number_one"
+                            app:layout_constraintBottom_toBottomOf="@+id/lyt1"
+                            app:layout_constraintEnd_toEndOf="parent" />
+
+                    </androidx.constraintlayout.widget.ConstraintLayout>
+
+                    <TextView
+                        android:id="@+id/tvPost1"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/cLyt1"
+                        android:layout_marginTop="3dp"
+                        android:gravity="center"
+                        android:text="Majharul"
+                        android:textColor="@color/top_user_red"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:id="@+id/tvScore1"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/tvPost1"
+                        android:gravity="center"
+                        android:text="200"
+                        android:textColor="@color/blackAndBlue"
+                        android:textStyle="bold" />
+
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:id="@+id/lytRank3"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="bottom"
+                    android:layout_marginBottom="@dimen/margin_5"
+                    android:layout_weight="1"
+                    android:visibility="visible">
+
+                    <androidx.constraintlayout.widget.ConstraintLayout
+                        android:id="@+id/cLyt3"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerHorizontal="true">
+
+                        <RelativeLayout
+                            android:id="@+id/lyt3"
+                            android:layout_width="@dimen/margin_80"
+                            android:layout_height="@dimen/margin_80"
+                            android:layout_centerHorizontal="true"
+                            android:background="@drawable/gradient_round"
+                            app:layout_constraintBottom_toTopOf="@id/lyt3"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toTopOf="parent">
+
+                            <de.hdodenhof.circleimageview.CircleImageView
+                                android:id="@+id/imgPost3"
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:layout_centerInParent="true"
+                                android:layout_marginStart="4dp"
+                                android:layout_marginTop="4dp"
+                                android:layout_marginEnd="4dp"
+                                android:layout_marginBottom="4dp"
+                                android:src="@mipmap/indianman" />
+                        </RelativeLayout>
+
+                        <ImageView
+                            android:id="@+id/tvR3"
+                            android:layout_width="@dimen/margin_25"
+                            android:layout_height="@dimen/margin_25"
+                            android:layout_alignParentEnd="true"
+                            android:layout_margin="2dp"
+                            android:contentDescription="@string/app_name"
+                            android:gravity="center"
+                            android:src="@drawable/number_three"
+                            app:layout_constraintBottom_toBottomOf="@+id/lyt3"
+                            app:layout_constraintEnd_toEndOf="parent" />
+                    </androidx.constraintlayout.widget.ConstraintLayout>
+
+                    <TextView
+                        android:id="@+id/tvPost3"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/cLyt3"
+                        android:layout_marginTop="3dp"
+                        android:gravity="center"
+                        android:text="Sayem"
+                        android:textColor="@color/top_user_blue"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:id="@+id/tvScore3"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/tvPost3"
+                        android:gravity="center"
+                        android:text="1720"
+                        android:textColor="@color/blackAndBlue"
+                        android:textStyle="bold" />
+
+
+                </RelativeLayout>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+
+                <Button
+                    android:layout_width="match_parent"
+                    android:layout_height="48dp"
+                    android:background="#00FFFFFF"
+                    android:fontFamily="serif"
+                    android:text="Popular Website"
+                    android:textAlignment="textStart"
+                    android:textAllCaps="false"
+                    android:textColor="@color/pink"
+                    app:icon="@drawable/menu_featured_website"
+                    app:iconSize="40dp"
+                    app:iconTintMode="multiply" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:orientation="horizontal"
+                    android:visibility="visible">
+
+                    <androidx.cardview.widget.CardView
+                        android:layout_width="110dp"
+                        android:layout_height="180dp"
+                        android:layout_margin="4dp"
+                        android:clickable="true"
+                        app:cardCornerRadius="10dp">
+
+                        <LinearLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="end"
+                            android:background="@drawable/badge_background"
+                            android:backgroundTint="@color/greenHome">
+
+                            <ImageView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center"
+                                android:layout_marginStart="10dp"
+                                android:layout_weight="1"
+                                app:srcCompat="@drawable/ic_wallet" />
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:drawablePadding="@dimen/margin_5"
+                                android:paddingStart="@dimen/margin_10"
+                                android:paddingTop="@dimen/margin_5"
+                                android:paddingEnd="@dimen/margin_10"
+                                android:paddingBottom="@dimen/margin_5"
+                                android:text="50"
+                                android:textColor="@color/white"
+                                app:drawableTint="@color/white"
+                                app:layout_constraintEnd_toEndOf="parent"
+                                app:layout_constraintTop_toTopOf="parent" />
+
+                        </LinearLayout>
+
+                        <Button
+                            android:id="@+id/v7"
+                            android:layout_width="80dp"
+                            android:layout_height="40dp"
+                            android:layout_gravity="bottom|center_horizontal"
+                            android:backgroundTint="#4CAF50"
+                            android:text="Visit"
+                            android:textAllCaps="false" />
+
+                        <ImageView
+                            android:layout_width="50dp"
+                            android:layout_height="50dp"
+                            android:layout_gravity="center"
+                            android:adjustViewBounds="true"
+                            android:contentDescription="@string/app_name"
+                            android:foregroundGravity="center"
+                            android:src="@mipmap/webdesign"
+                            tools:ignore="MissingClass" />
+
+                    </androidx.cardview.widget.CardView>
+
+                    <androidx.cardview.widget.CardView
+                        android:layout_width="110dp"
+                        android:layout_height="180dp"
+                        android:layout_margin="4dp"
+                        android:clickable="true"
+                        app:cardCornerRadius="10dp">
+
+                        <LinearLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="end"
+                            android:background="@drawable/badge_background"
+                            android:backgroundTint="@color/greenHome">
+
+                            <ImageView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center"
+                                android:layout_marginStart="10dp"
+                                android:layout_weight="1"
+                                app:srcCompat="@drawable/ic_wallet" />
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:drawablePadding="@dimen/margin_5"
+                                android:paddingStart="@dimen/margin_10"
+                                android:paddingTop="@dimen/margin_5"
+                                android:paddingEnd="@dimen/margin_10"
+                                android:paddingBottom="@dimen/margin_5"
+                                android:text="50"
+                                android:textColor="@color/white"
+                                app:drawableTint="@color/white"
+                                app:layout_constraintEnd_toEndOf="parent"
+                                app:layout_constraintTop_toTopOf="parent" />
+
+                        </LinearLayout>
+
+                        <Button
+                            android:id="@+id/v8"
+                            android:layout_width="80dp"
+                            android:layout_height="40dp"
+                            android:layout_gravity="bottom|center_horizontal"
+                            android:backgroundTint="#4CAF50"
+                            android:text="Visit"
+                            android:textAllCaps="false" />
+
+                        <ImageView
+                            android:layout_width="50dp"
+                            android:layout_height="50dp"
+                            android:layout_gravity="center"
+                            android:adjustViewBounds="true"
+                            android:contentDescription="@string/app_name"
+                            android:foregroundGravity="center"
+                            android:src="@mipmap/webdesign"
+                            tools:ignore="MissingClass" />
+
+                    </androidx.cardview.widget.CardView>
+
+                    <androidx.cardview.widget.CardView
+                        android:layout_width="110dp"
+                        android:layout_height="180dp"
+                        android:layout_margin="4dp"
+                        android:clickable="true"
+                        app:cardCornerRadius="10dp">
+
+                        <LinearLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="end"
+                            android:background="@drawable/badge_background"
+                            android:backgroundTint="@color/greenHome">
+
+                            <ImageView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center"
+                                android:layout_marginStart="10dp"
+                                android:layout_weight="1"
+                                app:srcCompat="@drawable/ic_wallet" />
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:drawablePadding="@dimen/margin_5"
+                                android:paddingStart="@dimen/margin_10"
+                                android:paddingTop="@dimen/margin_5"
+                                android:paddingEnd="@dimen/margin_10"
+                                android:paddingBottom="@dimen/margin_5"
+                                android:text="50"
+                                android:textColor="@color/white"
+                                app:drawableTint="@color/white"
+                                app:layout_constraintEnd_toEndOf="parent"
+                                app:layout_constraintTop_toTopOf="parent" />
+
+                        </LinearLayout>
+
+                        <Button
+                            android:id="@+id/v9"
+                            android:layout_width="80dp"
+                            android:layout_height="40dp"
+                            android:layout_gravity="bottom|center_horizontal"
+                            android:backgroundTint="#4CAF50"
+                            android:text="Visit"
+                            android:textAllCaps="false" />
+
+                        <ImageView
+                            android:layout_width="50dp"
+                            android:layout_height="50dp"
+                            android:layout_gravity="center"
+                            android:adjustViewBounds="true"
+                            android:contentDescription="@string/app_name"
+                            android:foregroundGravity="center"
+                            android:src="@mipmap/webdesign"
+                            tools:ignore="MissingClass" />
+
+                    </androidx.cardview.widget.CardView>
+                </LinearLayout>
+
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:orientation="horizontal"
+                    android:visibility="visible">
+
+                    <androidx.cardview.widget.CardView
+                        android:layout_width="110dp"
+                        android:layout_height="180dp"
+                        android:layout_margin="4dp"
+                        android:clickable="true"
+                        app:cardCornerRadius="10dp">
+
+                        <LinearLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="end"
+                            android:background="@drawable/badge_background"
+                            android:backgroundTint="@color/greenHome">
+
+                            <ImageView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center"
+                                android:layout_marginStart="10dp"
+                                android:layout_weight="1"
+                                app:srcCompat="@drawable/ic_wallet" />
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:drawablePadding="@dimen/margin_5"
+                                android:paddingStart="@dimen/margin_10"
+                                android:paddingTop="@dimen/margin_5"
+                                android:paddingEnd="@dimen/margin_10"
+                                android:paddingBottom="@dimen/margin_5"
+                                android:text="50"
+                                android:textColor="@color/white"
+                                app:drawableTint="@color/white"
+                                app:layout_constraintEnd_toEndOf="parent"
+                                app:layout_constraintTop_toTopOf="parent" />
+
+                        </LinearLayout>
+
+                        <Button
+                            android:id="@+id/v10"
+                            android:layout_width="80dp"
+                            android:layout_height="40dp"
+                            android:layout_gravity="bottom|center_horizontal"
+                            android:backgroundTint="#4CAF50"
+                            android:text="Visit"
+                            android:textAllCaps="false" />
+
+                        <ImageView
+                            android:layout_width="50dp"
+                            android:layout_height="50dp"
+                            android:layout_gravity="center"
+                            android:adjustViewBounds="true"
+                            android:contentDescription="@string/app_name"
+                            android:foregroundGravity="center"
+                            android:src="@mipmap/webdesign"
+                            tools:ignore="MissingClass" />
+
+                    </androidx.cardview.widget.CardView>
+
+                    <androidx.cardview.widget.CardView
+                        android:layout_width="110dp"
+                        android:layout_height="180dp"
+                        android:layout_margin="4dp"
+                        android:clickable="true"
+                        app:cardCornerRadius="10dp">
+
+                        <LinearLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="end"
+                            android:background="@drawable/badge_background"
+                            android:backgroundTint="@color/greenHome">
+
+                            <ImageView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center"
+                                android:layout_marginStart="10dp"
+                                android:layout_weight="1"
+                                app:srcCompat="@drawable/ic_wallet" />
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:drawablePadding="@dimen/margin_5"
+                                android:paddingStart="@dimen/margin_10"
+                                android:paddingTop="@dimen/margin_5"
+                                android:paddingEnd="@dimen/margin_10"
+                                android:paddingBottom="@dimen/margin_5"
+                                android:text="50"
+                                android:textColor="@color/white"
+                                app:drawableTint="@color/white"
+                                app:layout_constraintEnd_toEndOf="parent"
+                                app:layout_constraintTop_toTopOf="parent" />
+
+                        </LinearLayout>
+
+                        <Button
+                            android:id="@+id/v11"
+                            android:layout_width="80dp"
+                            android:layout_height="40dp"
+                            android:layout_gravity="bottom|center_horizontal"
+                            android:backgroundTint="#4CAF50"
+                            android:text="Visit"
+                            android:textAllCaps="false" />
+
+                        <ImageView
+                            android:layout_width="50dp"
+                            android:layout_height="50dp"
+                            android:layout_gravity="center"
+                            android:adjustViewBounds="true"
+                            android:contentDescription="@string/app_name"
+                            android:foregroundGravity="center"
+                            android:src="@mipmap/webdesign"
+                            tools:ignore="MissingClass" />
+
+                    </androidx.cardview.widget.CardView>
+
+                    <androidx.cardview.widget.CardView
+                        android:layout_width="110dp"
+                        android:layout_height="180dp"
+                        android:layout_margin="4dp"
+                        android:clickable="true"
+                        app:cardCornerRadius="10dp">
+
+                        <LinearLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="end"
+                            android:background="@drawable/badge_background"
+                            android:backgroundTint="@color/greenHome">
+
+                            <ImageView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center"
+                                android:layout_marginStart="10dp"
+                                android:layout_weight="1"
+                                app:srcCompat="@drawable/ic_wallet" />
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:drawablePadding="@dimen/margin_5"
+                                android:paddingStart="@dimen/margin_10"
+                                android:paddingTop="@dimen/margin_5"
+                                android:paddingEnd="@dimen/margin_10"
+                                android:paddingBottom="@dimen/margin_5"
+                                android:text="50"
+                                android:textColor="@color/white"
+                                app:drawableTint="@color/white"
+                                app:layout_constraintEnd_toEndOf="parent"
+                                app:layout_constraintTop_toTopOf="parent" />
+
+                        </LinearLayout>
+
+                        <Button
+                            android:id="@+id/v12"
+                            android:layout_width="80dp"
+                            android:layout_height="40dp"
+                            android:layout_gravity="bottom|center_horizontal"
+                            android:backgroundTint="#4CAF50"
+                            android:text="Visit"
+                            android:textAllCaps="false" />
+
+                        <ImageView
+                            android:layout_width="50dp"
+                            android:layout_height="50dp"
+                            android:layout_gravity="center"
+                            android:adjustViewBounds="true"
+                            android:contentDescription="@string/app_name"
+                            android:foregroundGravity="center"
+                            android:src="@mipmap/webdesign"
+                            tools:ignore="MissingClass" />
+
+                    </androidx.cardview.widget.CardView>
+                </LinearLayout>
+
+                <Button
+                    android:id="@+id/button2"
+                    android:layout_width="match_parent"
+                    android:layout_height="48dp"
+                    android:background="#00FFFFFF"
+                    android:fontFamily="serif"
+                    android:text="Popular Games"
+                    android:textAlignment="textStart"
+                    android:textAllCaps="false"
+                    android:textColor="@color/pink"
+                    app:icon="@drawable/menu_games"
+                    app:iconSize="40dp"
+                    app:iconTintMode="multiply" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:gravity="center"
+                    android:orientation="horizontal">
+
+                    <androidx.cardview.widget.CardView
+                        android:layout_width="110dp"
+                        android:layout_height="180dp"
+                        android:layout_margin="4dp"
+                        android:clickable="true"
+                        app:cardCornerRadius="10dp">
+
+                        <LinearLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="end"
+                            android:background="@drawable/badge_background"
+                            android:backgroundTint="#E91E63">
+
+                            <ImageView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center"
+                                android:layout_marginStart="10dp"
+                                android:layout_weight="1"
+                                app:srcCompat="@drawable/ic_wallet" />
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:drawablePadding="@dimen/margin_5"
+                                android:paddingStart="@dimen/margin_10"
+                                android:paddingTop="@dimen/margin_5"
+                                android:paddingEnd="@dimen/margin_10"
+                                android:paddingBottom="@dimen/margin_5"
+                                android:text="50"
+                                android:textColor="@color/white"
+                                app:drawableTint="@color/white"
+                                app:layout_constraintEnd_toEndOf="parent"
+                                app:layout_constraintTop_toTopOf="parent" />
+
+                        </LinearLayout>
+
+                        <Button
+                            android:id="@+id/v4"
+                            android:layout_width="80dp"
+                            android:layout_height="40dp"
+                            android:layout_gravity="bottom|center_horizontal"
+                            android:backgroundTint="#E91E63"
+                            android:text="Visit"
+                            android:textAllCaps="false"
+                            app:cornerRadius="20dp" />
+
+                        <ImageView
+                            android:layout_width="50dp"
+                            android:layout_height="50dp"
+                            android:layout_gravity="center"
+                            android:adjustViewBounds="true"
+                            android:contentDescription="@string/app_name"
+                            android:foregroundGravity="center"
+                            android:src="@mipmap/webdesign"
+                            tools:ignore="MissingClass" />
+
+                    </androidx.cardview.widget.CardView>
+
+                    <androidx.cardview.widget.CardView
+                        android:layout_width="110dp"
+                        android:layout_height="180dp"
+                        android:layout_margin="4dp"
+                        android:clickable="true"
+                        app:cardCornerRadius="10dp">
+
+                        <LinearLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="end"
+                            android:background="@drawable/badge_background"
+                            android:backgroundTint="#E91E63">
+
+                            <ImageView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center"
+                                android:layout_marginStart="10dp"
+                                android:layout_weight="1"
+                                app:srcCompat="@drawable/ic_wallet" />
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:drawablePadding="@dimen/margin_5"
+                                android:paddingStart="@dimen/margin_10"
+                                android:paddingTop="@dimen/margin_5"
+                                android:paddingEnd="@dimen/margin_10"
+                                android:paddingBottom="@dimen/margin_5"
+                                android:text="50"
+                                android:textColor="@color/white"
+                                app:drawableTint="@color/white"
+                                app:layout_constraintEnd_toEndOf="parent"
+                                app:layout_constraintTop_toTopOf="parent" />
+
+                        </LinearLayout>
+
+                        <Button
+                            android:id="@+id/v5"
+                            android:layout_width="80dp"
+                            android:layout_height="40dp"
+                            android:layout_gravity="bottom|center_horizontal"
+                            android:backgroundTint="#E91E63"
+                            android:text="Visit"
+                            android:textAllCaps="false"
+                            app:cornerRadius="20dp" />
+
+                        <ImageView
+                            android:layout_width="50dp"
+                            android:layout_height="50dp"
+                            android:layout_gravity="center"
+                            android:adjustViewBounds="true"
+                            android:contentDescription="@string/app_name"
+                            android:foregroundGravity="center"
+                            android:src="@mipmap/webdesign"
+                            tools:ignore="MissingClass" />
+
+                    </androidx.cardview.widget.CardView>
+
+                    <androidx.cardview.widget.CardView
+                        android:layout_width="110dp"
+                        android:layout_height="180dp"
+                        android:layout_margin="4dp"
+                        android:clickable="true"
+                        app:cardCornerRadius="10dp">
+
+                        <LinearLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="end"
+                            android:background="@drawable/badge_background"
+                            android:backgroundTint="#E91E63">
+
+                            <ImageView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center"
+                                android:layout_marginStart="10dp"
+                                android:layout_weight="1"
+                                app:srcCompat="@drawable/ic_wallet" />
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:drawablePadding="@dimen/margin_5"
+                                android:paddingStart="@dimen/margin_10"
+                                android:paddingTop="@dimen/margin_5"
+                                android:paddingEnd="@dimen/margin_10"
+                                android:paddingBottom="@dimen/margin_5"
+                                android:text="50"
+                                android:textColor="@color/white"
+                                app:drawableTint="@color/white"
+                                app:layout_constraintEnd_toEndOf="parent"
+                                app:layout_constraintTop_toTopOf="parent" />
+
+                        </LinearLayout>
+
+                        <Button
+                            android:id="@+id/v6"
+                            android:layout_width="80dp"
+                            android:layout_height="40dp"
+                            android:layout_gravity="bottom|center_horizontal"
+                            android:backgroundTint="#E91E63"
+                            android:text="Visit"
+                            android:textAllCaps="false"
+                            app:cornerRadius="20dp" />
+
+                        <ImageView
+                            android:layout_width="50dp"
+                            android:layout_height="50dp"
+                            android:layout_gravity="center"
+                            android:adjustViewBounds="true"
+                            android:contentDescription="@string/app_name"
+                            android:foregroundGravity="center"
+                            android:src="@mipmap/console"
+                            tools:ignore="MissingClass" />
+
+                    </androidx.cardview.widget.CardView>
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:gravity="center"
+                    android:orientation="horizontal">
+
+                    <androidx.cardview.widget.CardView
+                        android:layout_width="110dp"
+                        android:layout_height="180dp"
+                        android:layout_margin="4dp"
+                        android:clickable="true"
+                        app:cardCornerRadius="10dp">
+
+                        <LinearLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="end"
+                            android:background="@drawable/badge_background"
+                            android:backgroundTint="#E91E63">
+
+                            <ImageView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center"
+                                android:layout_marginStart="10dp"
+                                android:layout_weight="1"
+                                app:srcCompat="@drawable/ic_wallet" />
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:drawablePadding="@dimen/margin_5"
+                                android:paddingStart="@dimen/margin_10"
+                                android:paddingTop="@dimen/margin_5"
+                                android:paddingEnd="@dimen/margin_10"
+                                android:paddingBottom="@dimen/margin_5"
+                                android:text="50"
+                                android:textColor="@color/white"
+                                app:drawableTint="@color/white"
+                                app:layout_constraintEnd_toEndOf="parent"
+                                app:layout_constraintTop_toTopOf="parent" />
+
+                        </LinearLayout>
+
+                        <Button
+                            android:id="@+id/v1"
+                            android:layout_width="80dp"
+                            android:layout_height="40dp"
+                            android:layout_gravity="bottom|center_horizontal"
+                            android:backgroundTint="#E91E63"
+                            android:text="Visit"
+                            android:textAllCaps="false"
+                            app:cornerRadius="20dp" />
+
+                        <ImageView
+                            android:layout_width="50dp"
+                            android:layout_height="50dp"
+                            android:layout_gravity="center"
+                            android:adjustViewBounds="true"
+                            android:contentDescription="@string/app_name"
+                            android:foregroundGravity="center"
+                            android:src="@mipmap/ludo"
+                            tools:ignore="MissingClass" />
+
+                    </androidx.cardview.widget.CardView>
+
+                    <androidx.cardview.widget.CardView
+                        android:layout_width="110dp"
+                        android:layout_height="180dp"
+                        android:layout_margin="4dp"
+                        android:clickable="true"
+                        app:cardCornerRadius="10dp">
+
+                        <LinearLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="end"
+                            android:background="@drawable/badge_background"
+                            android:backgroundTint="#E91E63">
+
+                            <ImageView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center"
+                                android:layout_marginStart="10dp"
+                                android:layout_weight="1"
+                                app:srcCompat="@drawable/ic_wallet" />
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:drawablePadding="@dimen/margin_5"
+                                android:paddingStart="@dimen/margin_10"
+                                android:paddingTop="@dimen/margin_5"
+                                android:paddingEnd="@dimen/margin_10"
+                                android:paddingBottom="@dimen/margin_5"
+                                android:text="50"
+                                android:textColor="@color/white"
+                                app:drawableTint="@color/white"
+                                app:layout_constraintEnd_toEndOf="parent"
+                                app:layout_constraintTop_toTopOf="parent" />
+
+                        </LinearLayout>
+
+                        <Button
+                            android:id="@+id/v2"
+                            android:layout_width="80dp"
+                            android:layout_height="40dp"
+                            android:layout_gravity="bottom|center_horizontal"
+                            android:backgroundTint="#E91E63"
+                            android:text="Visit"
+                            android:textAllCaps="false"
+                            app:cornerRadius="20dp" />
+
+                        <ImageView
+                            android:layout_width="50dp"
+                            android:layout_height="50dp"
+                            android:layout_gravity="center"
+                            android:adjustViewBounds="true"
+                            android:contentDescription="@string/app_name"
+                            android:foregroundGravity="center"
+                            android:src="@mipmap/floo"
+                            tools:ignore="MissingClass" />
+
+                    </androidx.cardview.widget.CardView>
+
+                    <androidx.cardview.widget.CardView
+                        android:layout_width="110dp"
+                        android:layout_height="180dp"
+                        android:layout_margin="4dp"
+                        android:clickable="true"
+                        app:cardCornerRadius="10dp">
+
+                        <LinearLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="end"
+                            android:background="@drawable/badge_background"
+                            android:backgroundTint="#E91E63">
+
+                            <ImageView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center"
+                                android:layout_marginStart="10dp"
+                                android:layout_weight="1"
+                                app:srcCompat="@drawable/ic_wallet" />
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:drawablePadding="@dimen/margin_5"
+                                android:paddingStart="@dimen/margin_10"
+                                android:paddingTop="@dimen/margin_5"
+                                android:paddingEnd="@dimen/margin_10"
+                                android:paddingBottom="@dimen/margin_5"
+                                android:text="50"
+                                android:textColor="@color/white"
+                                app:drawableTint="@color/white"
+                                app:layout_constraintEnd_toEndOf="parent"
+                                app:layout_constraintTop_toTopOf="parent" />
+
+                        </LinearLayout>
+
+                        <Button
+                            android:id="@+id/v3"
+                            android:layout_width="80dp"
+                            android:layout_height="40dp"
+                            android:layout_gravity="bottom|center_horizontal"
+                            android:backgroundTint="#E91E63"
+                            android:text="Visit"
+                            android:textAllCaps="false"
+                            app:cornerRadius="20dp" />
+
+                        <ImageView
+                            android:layout_width="50dp"
+                            android:layout_height="50dp"
+                            android:layout_gravity="center"
+                            android:adjustViewBounds="true"
+                            android:contentDescription="@string/app_name"
+                            android:foregroundGravity="center"
+                            android:src="@mipmap/tass"
+                            tools:ignore="MissingClass" />
+
+                    </androidx.cardview.widget.CardView>
+                </LinearLayout>
+            </LinearLayout>
+
+        </LinearLayout>
+    </ScrollView>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        >
+        android:layout_height="match_parent">
+
         <LinearLayout
             android:id="@+id/appBar"
             android:layout_width="match_parent"
             android:layout_height="?actionBarSize"
-            android:background="?attr/colorPrimary"
+            android:background="@drawable/side_nav_bar"
             android:orientation="horizontal"
             android:paddingStart="15dp"
             android:paddingEnd="15dp"
@@ -31,7 +1185,7 @@
 
             <TextView
                 android:id="@+id/textTitle"
-                android:layout_width="200dp"
+                android:layout_width="100dp"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:layout_marginLeft="15dp"
@@ -41,11 +1195,12 @@
                 android:textStyle="bold" />
 
 
-            <ImageView
+            <ImageButton
                 android:id="@+id/info"
-                android:layout_width="30dp"
-                android:layout_height="30dp"
+                android:layout_width="match_parent"
+                android:layout_height="48dp"
                 android:layout_gravity="center"
+                android:background="#00FFFFFF"
                 android:src="@drawable/ic_info"
                 app:tint="#FFFFFF" />
 
@@ -61,4 +1216,8 @@
         android:layout_gravity="start"
         app:headerLayout="@layout/nav_header_main"
         app:menu="@menu/activity_main_drawer" />
+
+
+
+
 </androidx.drawerlayout.widget.DrawerLayout>

@@ -44,6 +44,11 @@
             android:icon="@mipmap/sharing"
             android:title="Rate Us" />
 
+        <item
+            android:id="@+id/Withdraw"
+            android:icon="@drawable/clear_cash"
+            android:title="Get paid" />
+
 
         <item
             android:id="@+id/About"
