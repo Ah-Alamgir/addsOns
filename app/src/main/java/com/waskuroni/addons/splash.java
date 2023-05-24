@@ -51,7 +51,7 @@ public class splash extends AppCompatActivity {
             autoLoad.loadAdd(this);
             autoLoad.userName = username;
             autoLoad.getdata("web");
-            Intent myIntent = new Intent(splash.this, MainActivity.class);
+            Intent myIntent = new Intent(splash.this, homes.class);
             startActivity(myIntent);
             finish();
         }

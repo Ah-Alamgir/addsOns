@@ -49,6 +49,7 @@ import java.util.ArrayList;
 
 public class autoLoad {
     public static String userName = "@hanif";
+    public static int addShowed = 3;
     public static int points = 500;
     static RewardedAd mRewardedAd;
     private static InterstitialAd mInterstitialAd;
@@ -154,7 +155,7 @@ public class autoLoad {
 
 
 
-    public static void loadReward(Context context,Activity activity, String id, String screen) {
+    public static void loadReward(Context context,Activity activity, String id) {
         if (mRewardedAd == null) {
             isLoading = true;
             AdRequest adRequest = new AdRequest.Builder().build();
@@ -172,12 +173,12 @@ public class autoLoad {
                         public void onAdLoaded(@NonNull RewardedAd rewardedAd) {
                             mRewardedAd = rewardedAd;
                             isLoading = false;
-                            showReward(context, activity, id, screen);
+                            showReward(context, activity, id);
                         }
 
                     });
         }else {
-            showReward(context, activity, id, screen);
+            showReward(context, activity, id);
         }
 
     }
@@ -185,11 +186,11 @@ public class autoLoad {
 
 
 
-    public static void showReward(Context context,Activity activity, String id, String screen) {
-
+    public static int showReward(Context context, Activity activity, String id) {
+        final int[] rewardAmount = {0};
         if (mRewardedAd == null) {
             Log.d("TAG", "The rewarded ad wasn't ready yet.");
-            return;
+            return rewardAmount[0];
         }
 
         mRewardedAd.setFullScreenContentCallback(
@@ -209,13 +210,6 @@ public class autoLoad {
                     @Override
                     public void onAdDismissedFullScreenContent() {
                         mRewardedAd = null;
-                        if(screen == "bonus"){
-                            AlertDialog.Builder builder = new AlertDialog.Builder(context);
-                            builder.setTitle(R.string.app_name);
-                            builder.setMessage("You will get your offer within a day. Please keep patience");
-                            AlertDialog alert = builder.create();
-                            alert.show();
-                        }
                         RewardShowing = false;
                     }
                 });
@@ -223,9 +217,10 @@ public class autoLoad {
         mRewardedAd.show(
                 activity,
                 rewardItem -> {
-                    int rewardAmount = rewardItem.getAmount();
-                    points  = points+ rewardAmount;
+                    rewardAmount[0] = rewardItem.getAmount();
                 });
+
+        return rewardAmount[0];
 
     }
 
@@ -320,7 +315,7 @@ public class autoLoad {
 
                                   points = 500;
                                   savePoints(userName, points);
-                                  context.startActivity(new Intent(context,MainActivity.class));
+                                  context.startActivity(new Intent(context,homes.class));
                                   saveSharePref(userName, context);
 
 
@@ -431,7 +426,7 @@ public class autoLoad {
         SharedPreferences.Editor editor = pref.edit();
         editor.putString("name", userName);
         editor.apply();
-        context.startActivity(new Intent(context, MainActivity.class));
+        context.startActivity(new Intent(context, homes.class));
     }
 
 }

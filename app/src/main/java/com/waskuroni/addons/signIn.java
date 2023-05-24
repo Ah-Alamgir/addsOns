@@ -156,7 +156,6 @@ public class signIn extends Activity {
                         } else {
                             updateUI(null);
                         }
-                        return 0;
                     }
                 });
     }
