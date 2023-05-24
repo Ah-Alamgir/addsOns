@@ -330,6 +330,7 @@ public class autoLoad {
                               .set(new signDetail(name, email, password, phone))
                               .addOnSuccessListener(aVoid -> {
                                   Toast.makeText(context, "Signup Successful", Toast.LENGTH_SHORT).show();
+                                  context.startActivity(new Intent(context,MainActivity.class));
 
 
                               })
@@ -346,6 +347,7 @@ public class autoLoad {
                     @Override
                     public void onSuccess(AuthResult authResult) {
                         Toast.makeText(context, "Login Successful", Toast.LENGTH_SHORT).show();
+                        context.startActivity(new Intent(context, MainActivity.class));
                     }
                 })
               .addOnFailureListener(new OnFailureListener() {

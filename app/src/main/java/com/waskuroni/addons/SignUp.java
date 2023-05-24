@@ -4,11 +4,14 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.app.ProgressDialog;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.util.Log;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.TextView;
+import android.widget.Toast;
 
 public class SignUp extends AppCompatActivity {
 
@@ -30,10 +33,33 @@ public class SignUp extends AppCompatActivity {
         logPage=  findViewById(R.id.logspage);
 
         register.setOnClickListener(v -> {
-            if (!name.getText().toString().isEmpty() && !phone.getText().toString().isEmpty() && !email.getText().toString().isEmpty() && !password.getText().toString().isEmpty()) {
+            if (name.getText().toString().isEmpty()){
+                Toast.makeText(this, "Enter your name", Toast.LENGTH_SHORT).show();
+            } else if (email.getText().toString().isEmpty()) {
+                Toast.makeText(this, "Enter your email", Toast.LENGTH_SHORT).show();
+            } else if (phone.getText().toString().isEmpty()) {
+                Toast.makeText(this, "Enter a valid phone number", Toast.LENGTH_SHORT).show();
+            } else if (password.getText().toString().isEmpty()) {
+                Toast.makeText(this, "Enter a password", Toast.LENGTH_SHORT).show();
+
+            }else {
                 autoLoad.signup(name.getText().toString(), phone.getText().toString(), email.getText().toString(), password.getText().toString().trim(), this);
             }
         });
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
         googleSign.setOnClickListener(v -> {
             finish();
@@ -47,5 +73,13 @@ public class SignUp extends AppCompatActivity {
 
 
 
+    public void save(String userName){
+        autoLoad.userName = userName;
+        SharedPreferences pref = getApplicationContext().getSharedPreferences("MyPref", 0);
+        SharedPreferences.Editor editor = pref.edit();
+        editor.putString("name", userName);
+        editor.apply();
+
+    }
 
 }

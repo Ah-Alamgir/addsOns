@@ -3,6 +3,7 @@ package com.waskuroni.addons;
 
 import android.os.Bundle;
 import android.os.CountDownTimer;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
@@ -39,6 +40,7 @@ public class Spinner extends AppCompatActivity {
 
                 // reading random value between 10 to 30
                 int spin = random.nextInt(20)+10;
+                Log.d("spins", String.valueOf(spin));
 
                 spin = spin * 36;
 

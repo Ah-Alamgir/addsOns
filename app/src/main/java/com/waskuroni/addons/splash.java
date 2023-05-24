@@ -34,9 +34,36 @@ public class splash extends AppCompatActivity {
 
 
 
-        move();
         nexts = findViewById(R.id.next);
         nexts.setVisibility(View.INVISIBLE);
+
+
+
+
+
+
+
+        SharedPreferences pref = getApplicationContext().getSharedPreferences("MyPref", 0);
+        String username = pref.getString("name", "@hanif");
+        if (Objects.equals(username, "@hanif")){
+            nexts.setVisibility(View.VISIBLE);
+        }else {
+            autoLoad.loadAdd(this);
+            autoLoad.userName = username;
+            autoLoad.getdata("web");
+            Intent myIntent = new Intent(splash.this, MainActivity.class);
+            startActivity(myIntent);
+            finish();
+        }
+
+
+
+
+
+
+
+
+
 
         nexts.setOnClickListener(v -> {
             click= click+1;
@@ -46,11 +73,11 @@ public class splash extends AppCompatActivity {
             }else {
                 viewFlipper.showNext();
                 if (click ==1){
-                    description.setText("");
-                    header.setText("");
+                    description.setText("Complete Your daily Task and get paid");
+                    header.setText("Get paid");
                 }else if (click==2){
-                    description.setText("");
-                    header.setText("");
+                    description.setText("Use our app to get real money by doing task");
+                    header.setText("Be luckey");
                 }
             }
 
@@ -64,17 +91,6 @@ public class splash extends AppCompatActivity {
 
 
     public void move(){
-        SharedPreferences pref = getApplicationContext().getSharedPreferences("MyPref", 0);
-        String username = pref.getString("name", "@hanif");
-        if (Objects.equals(username, "@hanif")){
-            nexts.setVisibility(View.VISIBLE);
-        }else {
-            autoLoad.loadAdd(this);
-            autoLoad.userName = username;
-            autoLoad.getdata("web");
-            Intent myIntent = new Intent(splash.this, MainActivity.class);
-            startActivity(myIntent);
-            finish();
-        }
+
     }
 }

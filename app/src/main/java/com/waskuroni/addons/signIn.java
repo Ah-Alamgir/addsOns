@@ -34,7 +34,7 @@ public class signIn extends Activity {
 
     private GoogleSignInClient mGoogleSignInClient;
     EditText emails, passwords;
-    Button login, resetPassword, gooleSign;
+    Button login, resetPassword, gooleSign, signUps;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -46,30 +46,43 @@ public class signIn extends Activity {
         login = findViewById(R.id.getIn);
         resetPassword = findViewById(R.id.reset);
         gooleSign = findViewById(R.id.googleSigns);
+        signUps = findViewById(R.id.logspage);
 
 
         login.setOnClickListener(v -> {
-            String email = emails.getText().toString();
-            String password = passwords.getText().toString();
-            if (!email.isEmpty() && !password.isEmpty()){
-                autoLoad.signin(email, password, signIn.this);
-            }{
-                Toast.makeText(signIn.this, "Please fill all fields", Toast.LENGTH_SHORT).show();
+
+
+            if(emails.getText().toString().isEmpty()) {
+                Toast.makeText(signIn.this, "Please fill Email fields", Toast.LENGTH_SHORT).show();
+            } else if (passwords.getText().toString().isEmpty()) {
+                Toast.makeText(this, "Enter password", Toast.LENGTH_SHORT).show();
+            }else {
+                autoLoad.signin(emails.getText().toString(), passwords.getText().toString(), signIn.this);
             }
+
         });
+
+
+
+
 
 
         resetPassword.setOnClickListener(v -> {
-            String email = emails.getText().toString();
-            if (!email.isEmpty()){
-                autoLoad.resetPassword(email, this);
-            }{
+
+            if (emails.getText().toString().isEmpty()){
                 Toast.makeText(signIn.this, "Please fill Email fields", Toast.LENGTH_SHORT).show();
+
+            }{
+                autoLoad.resetPassword(emails.getText().toString(), this);
+
             }
         });
 
 
 
+        signUps.setOnClickListener(v -> {
+            startActivity(new Intent(this, SignUp.class));
+        });
 
 
 
