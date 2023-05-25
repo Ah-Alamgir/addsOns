@@ -24,7 +24,6 @@ public class instGameRecyclelar extends RecyclerView.Adapter<instGameRecyclelar.
 
     private List<String> mData;
     String[] collectText;
-    private static Layout layout;
     private ArrayList<String> webLink= new ArrayList<>();
     private LayoutInflater mInflater;
     private ItemClickListener mClickListener;
@@ -38,7 +37,7 @@ public class instGameRecyclelar extends RecyclerView.Adapter<instGameRecyclelar.
     // inflates the row layout from xml when needed
     @Override
     public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        View view= mInflater.inflate(R.layout.webpages, parent, false);
+        View view= mInflater.inflate(R.layout.webpages_instantgame, parent, false);
         return new ViewHolder(view);
     }
 
@@ -59,11 +58,13 @@ public class instGameRecyclelar extends RecyclerView.Adapter<instGameRecyclelar.
     public void onBindViewHolder(ViewHolder holder, int position) {
 
         collectText = mData.get(position).split(",");
-        holder.collects.setText(collectText[1]);
+        holder.collectsgame.setText(collectText[1]);
         holder.gameName.setText(collectText[2]);
-        webLink.add(collectText[1]);
         Picasso.get().load(collectText[3].toString().trim()).into(holder.imageView);
         holder.cardView.startAnimation(AnimationUtils.loadAnimation(holder.itemView.getContext(), R.anim.anim1));
+        holder.cardView.setOnClickListener(v -> {
+            webview.link = collectText[0];
+        });
     }
 
     // total number of rows
@@ -76,16 +77,16 @@ public class instGameRecyclelar extends RecyclerView.Adapter<instGameRecyclelar.
     // stores and recycles views as they are scrolled off screen
     public class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
         TextView gameName;
-        TextView collects;
+        TextView collectsgame;
         ImageView  imageView;
         CardView cardView;
 
         ViewHolder(View itemView) {
             super(itemView);
-            gameName = itemView.findViewById(R.id.gameNAme);
-            collects = itemView.findViewById(R.id.collect);
-            imageView  = itemView.findViewById(R.id.gameImage);
-            cardView = itemView.findViewById(R.id.cardView3);
+            gameName = itemView.findViewById(R.id.gameNAmess);
+            collectsgame = itemView.findViewById(R.id.collectgame);
+            imageView  = itemView.findViewById(R.id.gameImageed);
+            cardView = itemView.findViewById(R.id.cardViewgame);
             itemView.setOnClickListener(this);
         }
 

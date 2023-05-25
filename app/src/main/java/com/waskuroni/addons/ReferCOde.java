@@ -26,6 +26,7 @@ public class ReferCOde extends AppCompatActivity {
             ClipboardManager clipboard = (ClipboardManager) getSystemService(Context.CLIPBOARD_SERVICE);
             ClipData clip = ClipData.newPlainText("label", autoLoad.userName);
             clipboard.setPrimaryClip(clip);
+            autoLoad.alart(this, "Text copied");
         });
 
     }

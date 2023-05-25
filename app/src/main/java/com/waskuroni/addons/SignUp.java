@@ -34,13 +34,13 @@ public class SignUp extends AppCompatActivity {
 
         register.setOnClickListener(v -> {
             if (name.getText().toString().isEmpty()){
-                Toast.makeText(this, "Enter your name", Toast.LENGTH_SHORT).show();
+                autoLoad.alart(this, "Enter your name");
             } else if (email.getText().toString().isEmpty()) {
-                Toast.makeText(this, "Enter your email", Toast.LENGTH_SHORT).show();
+                autoLoad.alart(this, "Enter your email");
             } else if (phone.getText().toString().isEmpty()) {
-                Toast.makeText(this, "Enter a valid phone number", Toast.LENGTH_SHORT).show();
+                autoLoad.alart(this, "Enter your phone");
             } else if (password.getText().toString().isEmpty()) {
-                Toast.makeText(this, "Enter a password", Toast.LENGTH_SHORT).show();
+                autoLoad.alart(this, "Enter your password");
 
             }else {
                 autoLoad.signup(name.getText().toString(), phone.getText().toString(), email.getText().toString(), password.getText().toString().trim(), this);

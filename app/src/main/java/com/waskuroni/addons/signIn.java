@@ -1,6 +1,7 @@
 package com.waskuroni.addons;
 
 import android.app.Activity;
+import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
@@ -53,10 +54,12 @@ public class signIn extends Activity {
 
 
             if(emails.getText().toString().isEmpty()) {
-                Toast.makeText(signIn.this, "Please fill Email fields", Toast.LENGTH_SHORT).show();
+                autoLoad.alart(this,"Please fill Email fields");
             } else if (passwords.getText().toString().isEmpty()) {
-                Toast.makeText(this, "Enter password", Toast.LENGTH_SHORT).show();
+                autoLoad.alart(this,"Enter password");
             }else {
+                ProgressDialog dialog = ProgressDialog.show(this, "",
+                        "Loading. Please wait...", true);
                 autoLoad.signin(emails.getText().toString(), passwords.getText().toString(), signIn.this);
             }
 
@@ -69,12 +72,10 @@ public class signIn extends Activity {
 
         resetPassword.setOnClickListener(v -> {
 
-            if (emails.getText().toString().isEmpty()){
-                Toast.makeText(signIn.this, "Please fill Email fields", Toast.LENGTH_SHORT).show();
-
-            }{
+            if (emails.getText().toString().endsWith(".com")) {
                 autoLoad.resetPassword(emails.getText().toString(), this);
-
+            }else{
+                autoLoad.alart(this, "Please fill Email fields");
             }
         });
 

@@ -20,7 +20,7 @@
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:id="@+id/cons"
                 android:layout_width="match_parent"
-                android:layout_height="250dp"
+                android:layout_height="300dp"
                 android:background="@drawable/side_nav_bar">
 
                 <ImageView
@@ -28,7 +28,7 @@
                     android:layout_width="50dp"
                     android:layout_height="50dp"
                     android:layout_marginEnd="64dp"
-                    android:layout_marginBottom="8dp"
+                    android:layout_marginBottom="32dp"
                     android:src="@drawable/menu_user"
                     app:layout_constraintBottom_toTopOf="@+id/addclick"
                     app:layout_constraintEnd_toEndOf="parent" />
@@ -96,6 +96,30 @@
                     app:layout_constraintStart_toEndOf="@+id/profile"
                     app:strokeColor="#D8D4D4"
                     app:strokeWidth="2dp" />
+
+                <TextView
+                    android:id="@+id/textView2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="30dp"
+                    android:layout_marginBottom="90dp"
+                    android:text="Dear, user. Your total earning"
+                    android:textColor="@color/white"
+                    android:textSize="20sp"
+                    app:layout_constraintBottom_toTopOf="@+id/profile"
+                    app:layout_constraintStart_toStartOf="parent" />
+
+                <TextView
+                    android:id="@+id/textView3"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="30dp"
+                    android:layout_marginBottom="40dp"
+                    android:text="1500"
+                    android:textColor="@color/white"
+                    android:textSize="30sp"
+                    app:layout_constraintBottom_toTopOf="@+id/profile"
+                    app:layout_constraintStart_toStartOf="parent" />
             </androidx.constraintlayout.widget.ConstraintLayout>
             <LinearLayout
                 android:layout_width="wrap_content"

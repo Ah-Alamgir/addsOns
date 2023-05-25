@@ -1,6 +1,5 @@
 package com.waskuroni.addons;
 
-import androidx.annotation.NonNull;
 import androidx.appcompat.app.ActionBarDrawerToggle;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.view.GravityCompat;
@@ -9,21 +8,22 @@ import androidx.drawerlayout.widget.DrawerLayout;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
-import android.view.MenuItem;
-import android.view.View;
+import android.util.Log;
 import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.ImageView;
-import android.widget.Toast;
+import android.widget.TextView;
 
 import com.google.android.material.navigation.NavigationView;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 
 public class homes extends AppCompatActivity {
     DrawerLayout drawerLayout;
     Button v1,v2,v3,v4,v5,v6,v7,v8,v9,v10,v11,v12,v13,v14,v15,v16,v17,v18;
     NavigationView navigationView;
     ActionBarDrawerToggle toggle;
-
+    TextView textView;
     ImageView imageMenu;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -47,6 +47,8 @@ public class homes extends AppCompatActivity {
         Button profile = findViewById(R.id.profile);
         Button ref = findViewById(R.id.refer);
 
+        textView = findViewById(R.id.textView3);
+        getPoints(autoLoad.userName);
 
 
 
@@ -241,5 +243,22 @@ public class homes extends AppCompatActivity {
             drawerLayout.openDrawer(GravityCompat.START);
         });
 
+    }
+
+
+
+    public void getPoints(String tags) {
+        FirebaseDatabase database = FirebaseDatabase.getInstance();
+        DatabaseReference myRef = database.getReference("userPoints");
+
+        myRef.child(tags).get().addOnCompleteListener(task -> {
+            if (!task.isSuccessful()) {
+                Log.e("firebase", "Error getting data", task.getException());
+            }
+            else {
+                autoLoad.points = Integer.valueOf(task.getResult().getValue().toString());
+                textView.setText(task.getResult().getValue().toString());
+            }
+        });
     }
 }

@@ -33,7 +33,6 @@ public class splash extends AppCompatActivity {
 
         autoLoad.getdata("home");
 
-
         nexts = findViewById(R.id.next);
         nexts.setVisibility(View.INVISIBLE);
 

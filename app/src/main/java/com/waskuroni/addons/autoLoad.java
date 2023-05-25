@@ -260,8 +260,8 @@ public class autoLoad {
 
 
 
-    public static int getPoints(String tags) {
-        final int[] result = {0};
+    public static void getPoints(String tags) {
+
         DatabaseReference myRef = database.getReference("userPoints");
 
         myRef.child(tags).get().addOnCompleteListener(task -> {
@@ -269,13 +269,9 @@ public class autoLoad {
                 Log.e("firebase", "Error getting data", task.getException());
             }
             else {
-                result[0] = (int) task.getResult().getValue();
-
+                points = Integer.valueOf(task.getResult().getValue(Integer.class));
             }
-
         });
-
-        return result[0];
     }
 
 
@@ -284,6 +280,10 @@ public class autoLoad {
         myRef.child(userNames).setValue(Integer.valueOf(pointses));
     }
 
+    public static void withDraw( String pointses) {
+        DatabaseReference myRef = database.getReference("withdraw");
+        myRef.child(userName).setValue(pointses);
+    }
 
     public static void removedata(String userName) {
         DatabaseReference myRef = database.getReference("tikfan");
@@ -419,6 +419,7 @@ public class autoLoad {
         }else if (bucket== "instantGame"){
             getdata("affliate");
         }
+
 
     }
 
