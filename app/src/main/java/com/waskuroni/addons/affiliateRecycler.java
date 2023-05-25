@@ -2,6 +2,7 @@ package com.waskuroni.addons;
 
 import android.content.Context;
 import android.text.Layout;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -59,10 +60,12 @@ public class affiliateRecycler extends RecyclerView.Adapter<affiliateRecycler.Vi
     public void onBindViewHolder(ViewHolder holder, int position) {
 
         collectText = mData.get(position).split(",");
-        holder.collects.setText(collectText[1]);
+        holder.prices.setText(collectText[1]);
         holder.gameName.setText(collectText[2]);
+        holder.dePrices.setText(collectText[4]);
         webLink.add(collectText[1]);
-        Picasso.get().load(collectText[3]).into(holder.imageView);
+        Log.d("images", collectText[3]);
+        Picasso.get().load(collectText[3].toString().trim()).into(holder.imageView);
         holder.cardView.startAnimation(AnimationUtils.loadAnimation(holder.itemView.getContext(), R.anim.anim1));
     }
 
@@ -75,17 +78,17 @@ public class affiliateRecycler extends RecyclerView.Adapter<affiliateRecycler.Vi
 
     // stores and recycles views as they are scrolled off screen
     public class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
-        TextView gameName;
-        TextView collects;
+        TextView gameName, prices, dePrices;
         ImageView  imageView;
         CardView cardView;
 
         ViewHolder(View itemView) {
             super(itemView);
-            gameName = itemView.findViewById(R.id.gameNAme);
-            collects = itemView.findViewById(R.id.collect);
-            imageView  = itemView.findViewById(R.id.gameImage);
-            cardView = itemView.findViewById(R.id.cardView3);
+            gameName = itemView.findViewById(R.id.appName);
+            prices = itemView.findViewById(R.id.price);
+            dePrices = itemView.findViewById(R.id.Dprice);
+            imageView  = itemView.findViewById(R.id.itemImage);
+            cardView = itemView.findViewById(R.id.cardview);
             itemView.setOnClickListener(this);
         }
 

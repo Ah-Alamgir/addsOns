@@ -47,7 +47,7 @@
         <item
             android:id="@+id/Withdraw"
             android:icon="@mipmap/moneybag"
-            android:title="Get paid" />
+            android:title="Withdraw Money" />
 
 
         <item

@@ -62,7 +62,7 @@ public class instGameRecyclelar extends RecyclerView.Adapter<instGameRecyclelar.
         holder.collects.setText(collectText[1]);
         holder.gameName.setText(collectText[2]);
         webLink.add(collectText[1]);
-        Picasso.get().load(collectText[3]).into(holder.imageView);
+        Picasso.get().load(collectText[3].toString().trim()).into(holder.imageView);
         holder.cardView.startAnimation(AnimationUtils.loadAnimation(holder.itemView.getContext(), R.anim.anim1));
     }
 

@@ -7,7 +7,7 @@ import androidx.recyclerview.widget.StaggeredGridLayoutManager;
 import android.os.Bundle;
 
 public class Affiliate extends AppCompatActivity {
-    instGameRecyclelar adapter;
+    affiliateRecycler adapter;
 
     RecyclerView recyclerView;
     @Override
@@ -19,10 +19,10 @@ public class Affiliate extends AppCompatActivity {
         autoLoad.layoutId = R.layout.webpages_affiliate;
         recyclerView = findViewById(R.id.affiliateRecycle);
         recyclerView.setHasFixedSize(true);
-        adapter = new instGameRecyclelar(this, autoLoad.affiliates);
+        adapter = new affiliateRecycler(this, autoLoad.affiliates);
 
 
-        StaggeredGridLayoutManager staggeredGridLayoutManager = new StaggeredGridLayoutManager(3, StaggeredGridLayoutManager.VERTICAL);
+        StaggeredGridLayoutManager staggeredGridLayoutManager = new StaggeredGridLayoutManager(2, StaggeredGridLayoutManager.VERTICAL);
         recyclerView.setLayoutManager(staggeredGridLayoutManager);
 
 
