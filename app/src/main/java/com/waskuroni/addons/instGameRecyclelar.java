@@ -38,7 +38,19 @@ public class instGameRecyclelar extends RecyclerView.Adapter<instGameRecyclelar.
         return new ViewHolder(view);
     }
 
-    // binds the data to the TextView in each row
+
+
+
+
+
+
+
+
+
+
+
+
+    // view setup
     @Override
     public void onBindViewHolder(ViewHolder holder, int position) {
 
@@ -89,9 +101,23 @@ public class instGameRecyclelar extends RecyclerView.Adapter<instGameRecyclelar.
         this.mClickListener = itemClickListener;
     }
 
+
+
+
+
+
+
+
+
+
+
+
+
     // parent activity will implement this method to respond to click events
     public interface ItemClickListener {
         void onItemClick(View view, int position);
+
+
 
     }
 }

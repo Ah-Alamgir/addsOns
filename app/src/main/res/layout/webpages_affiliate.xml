@@ -15,7 +15,7 @@
         android:layout_height="wrap_content"
         android:layout_gravity="end"
         android:background="@drawable/badge_background"
-        android:backgroundTint="@color/greenHome">
+        android:backgroundTint="@color/purple">
 
         <ImageView
             android:id="@+id/imageView2"
@@ -48,7 +48,7 @@
         android:layout_width="80dp"
         android:layout_height="40dp"
         android:layout_gravity="bottom|center_horizontal"
-        android:backgroundTint="#4CAF50"
+        android:backgroundTint="@color/purple"
         android:text="Visit"
         android:textAllCaps="false"
         app:cornerRadius="20dp" />
@@ -78,7 +78,7 @@
         android:fontFamily="serif"
         android:text="Candy Crush"
         android:textAlignment="center"
-        android:textColor="#E91E63"
+        android:textColor="@color/purple"
         android:textStyle="bold" />
 
 
