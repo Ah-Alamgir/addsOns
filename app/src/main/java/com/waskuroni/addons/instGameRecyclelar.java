@@ -4,16 +4,24 @@ import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.animation.AnimationUtils;
+import android.widget.ImageView;
 import android.widget.TextView;
 
+import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.squareup.picasso.Picasso;
+
+import java.util.ArrayList;
 import java.util.List;
 
 
 public class instGameRecyclelar extends RecyclerView.Adapter<instGameRecyclelar.ViewHolder> {
 
     private List<String> mData;
+    String[] collectText;
+    private ArrayList<String> webLink= new ArrayList<>();
     private LayoutInflater mInflater;
     private ItemClickListener mClickListener;
 
@@ -33,8 +41,13 @@ public class instGameRecyclelar extends RecyclerView.Adapter<instGameRecyclelar.
     // binds the data to the TextView in each row
     @Override
     public void onBindViewHolder(ViewHolder holder, int position) {
-        String animal = mData.get(position);
-        holder.myTextView.setText(animal);
+
+        collectText = mData.get(position).split(",");
+        holder.collects.setText(collectText[1]);
+        holder.gameName.setText(collectText[2]);
+        webLink.add(collectText[1]);
+        Picasso.get().load(collectText[3]).into(holder.imageView);
+        holder.cardView.startAnimation(AnimationUtils.loadAnimation(holder.itemView.getContext(), R.anim.anim1));
     }
 
     // total number of rows
@@ -46,11 +59,17 @@ public class instGameRecyclelar extends RecyclerView.Adapter<instGameRecyclelar.
 
     // stores and recycles views as they are scrolled off screen
     public class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
-        TextView myTextView;
+        TextView gameName;
+        TextView collects;
+        ImageView  imageView;
+        CardView cardView;
 
         ViewHolder(View itemView) {
             super(itemView);
-            myTextView = itemView.findViewById(R.id.gameNAme);
+            gameName = itemView.findViewById(R.id.gameNAme);
+            collects = itemView.findViewById(R.id.collect);
+            imageView  = itemView.findViewById(R.id.gameImage);
+            cardView = itemView.findViewById(R.id.cardView3);
             itemView.setOnClickListener(this);
         }
 
@@ -73,5 +92,6 @@ public class instGameRecyclelar extends RecyclerView.Adapter<instGameRecyclelar.
     // parent activity will implement this method to respond to click events
     public interface ItemClickListener {
         void onItemClick(View view, int position);
+
     }
 }

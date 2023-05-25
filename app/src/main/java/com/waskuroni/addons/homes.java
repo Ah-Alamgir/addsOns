@@ -20,6 +20,7 @@ import com.google.android.material.navigation.NavigationView;
 
 public class homes extends AppCompatActivity {
     DrawerLayout drawerLayout;
+    Button v1,v2,v3,v4,v5,v6,v7,v8,v9,v10,v11,v12,v13,v14,v15,v16,v17,v18;
     NavigationView navigationView;
     ActionBarDrawerToggle toggle;
 
@@ -47,13 +48,105 @@ public class homes extends AppCompatActivity {
 
 
 
+
         addclicked.setOnClickListener(v -> startActivity(new Intent(this, playAds.class)));
         ref.setOnClickListener(v -> startActivity(new Intent(this, refetence.class)));
 
+        v1 = findViewById(R.id.v1);
+        v2 = findViewById(R.id.v2);
+        v3 = findViewById(R.id.v3);
+        v4 = findViewById(R.id.v4);
+        v5 = findViewById(R.id.v5);
+        v6 = findViewById(R.id.v6);
+        v7 = findViewById(R.id.v7);
+        v8 = findViewById(R.id.v8);
+        v9 = findViewById(R.id.v9);
+        v10 = findViewById(R.id.v10);
+        v11 = findViewById(R.id.v11);
+        v12 = findViewById(R.id.v12);
+
+//        v13 = findViewById(R.id.v13);
+//        v14 = findViewById(R.id.v14);
+//        v15 = findViewById(R.id.v15);
+//        v16 = findViewById(R.id.v16);
+//        v17 = findViewById(R.id.v17);
+//        v18 = findViewById(R.id.v18);
 
 
 
 
+        v1.setOnClickListener(v -> {
+            webview.link = autoLoad.home.get(0);
+            startActivity(new Intent(this, webview.class));
+        });
+        v2.setOnClickListener(v -> {
+            webview.link = autoLoad.home.get(1);
+            startActivity(new Intent(this, webview.class));
+        });
+        v3.setOnClickListener(v -> {
+            webview.link = autoLoad.home.get(2);
+            startActivity(new Intent(this, webview.class));
+        });
+        v4.setOnClickListener(v -> {
+            webview.link = autoLoad.home.get(3);
+            startActivity(new Intent(this, webview.class));
+        });
+        v5.setOnClickListener(v -> {
+            webview.link = autoLoad.home.get(4);
+            startActivity(new Intent(this, webview.class));
+        });
+        v6.setOnClickListener(v -> {
+            webview.link = autoLoad.home.get(5);
+            startActivity(new Intent(this, webview.class));
+        });
+        v7.setOnClickListener(v -> {
+            webview.link = autoLoad.home.get(6);
+            startActivity(new Intent(this, webview.class));
+        });
+        v8.setOnClickListener(v -> {
+            webview.link = autoLoad.home.get(7);
+            startActivity(new Intent(this, webview.class));
+        });
+        v9.setOnClickListener(v -> {
+            webview.link = autoLoad.home.get(8);
+            startActivity(new Intent(this, webview.class));
+        });
+        v10.setOnClickListener(v -> {
+            webview.link = autoLoad.home.get(9);
+            startActivity(new Intent(this, webview.class));
+        });
+        v11.setOnClickListener(v -> {
+            webview.link = autoLoad.home.get(10);
+            startActivity(new Intent(this, webview.class));
+        });
+        v12.setOnClickListener(v -> {
+            webview.link = autoLoad.home.get(11);
+            startActivity(new Intent(this, webview.class));
+        });
+//        v13.setOnClickListener(v -> {
+//            webview.link = autoLoad.home.get(12);
+//            startActivity(new Intent(this, webview.class));
+//        });
+//        v14.setOnClickListener(v -> {
+//            webview.link = autoLoad.home.get(13);
+//            startActivity(new Intent(this, webview.class));
+//        });
+//        v15.setOnClickListener(v -> {
+//            webview.link = autoLoad.home.get(14);
+//            startActivity(new Intent(this, webview.class));
+//        });
+//        v16.setOnClickListener(v -> {
+//            webview.link = autoLoad.home.get(15);
+//            startActivity(new Intent(this, webview.class));
+//        });
+//        v17.setOnClickListener(v -> {
+//            webview.link = autoLoad.home.get(16);
+//            startActivity(new Intent(this, webview.class));
+//        });
+//        v18.setOnClickListener(v -> {
+//            webview.link = autoLoad.home.get(17);
+//            startActivity(new Intent(this, webview.class));
+//        });
 
 
 

@@ -23,12 +23,13 @@ public class playAds extends AppCompatActivity {
         Button showAds = findViewById(R.id.tvPlayAd);
         showAds.setOnClickListener(view -> {
             if(autoLoad.addShowed <1){
+                autoLoad.alart(this,"This task has already been completed");
+
+            }else {
                 int ammount =  autoLoad.showReward(this, this, "");
                 autoLoad.points = autoLoad.points+ ammount;
                 autoLoad.addShowed = autoLoad.addShowed-1;
                 textView.setText("Points::   " +String.valueOf(autoLoad.points));
-            }else {
-                autoLoad.alart(this,"This task has already been completed");
             }
 
         });

@@ -21,8 +21,8 @@ import java.util.ArrayList;
 import java.util.GregorianCalendar;
 
 public class instantGame extends AppCompatActivity {
-    public static ArrayList<String> imagelist= new ArrayList<>();
-    MyAdapter adapter;
+
+    instGameRecyclelar adapter;
     static String link,key;
 
     RecyclerView recyclerView;
@@ -34,7 +34,7 @@ public class instantGame extends AppCompatActivity {
 
         recyclerView = findViewById(R.id.recycle);
         recyclerView.setHasFixedSize(true);
-        adapter = new MyAdapter(this, imagelist);
+        adapter = new instGameRecyclelar(this, autoLoad.instGame);
 
 
         StaggeredGridLayoutManager staggeredGridLayoutManager = new StaggeredGridLayoutManager(3, StaggeredGridLayoutManager.VERTICAL);

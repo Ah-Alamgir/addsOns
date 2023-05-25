@@ -806,7 +806,7 @@
                             android:adjustViewBounds="true"
                             android:contentDescription="@string/app_name"
                             android:foregroundGravity="center"
-                            android:src="@mipmap/webdesign"
+                            android:src="@mipmap/gun"
                             tools:ignore="MissingClass" />
 
                     </androidx.cardview.widget.CardView>
@@ -831,7 +831,7 @@
                                 android:layout_gravity="center"
                                 android:layout_marginStart="10dp"
                                 android:layout_weight="1"
-                                app:srcCompat="@drawable/ic_wallet" />
+                                app:srcCompat="@mipmap/gun" />
 
                             <TextView
                                 android:layout_width="wrap_content"
@@ -866,7 +866,7 @@
                             android:adjustViewBounds="true"
                             android:contentDescription="@string/app_name"
                             android:foregroundGravity="center"
-                            android:src="@mipmap/webdesign"
+                            android:src="@mipmap/snake"
                             tools:ignore="MissingClass" />
 
                     </androidx.cardview.widget.CardView>
@@ -1201,6 +1201,7 @@
                 android:layout_height="48dp"
                 android:layout_gravity="center"
                 android:background="#00FFFFFF"
+                android:contentDescription="info"
                 android:src="@drawable/ic_info"
                 app:tint="#FFFFFF" />
 

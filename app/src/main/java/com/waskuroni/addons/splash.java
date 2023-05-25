@@ -39,10 +39,6 @@ public class splash extends AppCompatActivity {
 
 
 
-
-
-
-
         SharedPreferences pref = getApplicationContext().getSharedPreferences("MyPref", 0);
         String username = pref.getString("name", "@hanif");
         if (Objects.equals(username, "@hanif")){
@@ -50,7 +46,6 @@ public class splash extends AppCompatActivity {
         }else {
             autoLoad.loadAdd(this);
             autoLoad.userName = username;
-            autoLoad.getdata("web");
             Intent myIntent = new Intent(splash.this, homes.class);
             startActivity(myIntent);
             finish();
@@ -90,7 +85,5 @@ public class splash extends AppCompatActivity {
 
 
 
-    public void move(){
 
-    }
 }
