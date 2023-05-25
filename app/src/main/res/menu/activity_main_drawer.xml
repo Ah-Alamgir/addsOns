@@ -21,18 +21,18 @@
             android:id="@+id/web"
             android:icon="@drawable/menu_featured_website"
             android:title="All website" />
+
+        <item
+            android:id="@+id/affilia"
+            android:icon="@drawable/product"
+            android:title="Affliates" />
+
         <item
             android:id="@+id/refer"
             android:icon="@drawable/menu_refer"
             android:title="Reference" />
-        <item
-            android:id="@+id/settings"
-            android:icon="@drawable/menu_setting"
-            android:title="Settings" />
-        <item
-            android:id="@+id/logOut"
-            android:icon="@drawable/menu_logout"
-            android:title="Log Out" />
+
+
         <item
             android:id="@+id/rate"
             android:icon="@mipmap/star"
@@ -42,7 +42,7 @@
         <item
             android:id="@+id/share"
             android:icon="@mipmap/sharing"
-            android:title="Rate Us" />
+            android:title="Share this app" />
 
         <item
             android:id="@+id/Withdraw"
@@ -54,5 +54,10 @@
             android:id="@+id/About"
             android:icon="@mipmap/about"
             android:title="About US" />
+
+        <item
+            android:id="@+id/logOut"
+            android:icon="@drawable/menu_logout"
+            android:title="Log Out" />
     </group>
 </menu>

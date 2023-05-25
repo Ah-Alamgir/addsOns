@@ -20,7 +20,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 
-public class instGameRecyclelar extends RecyclerView.Adapter<instGameRecyclelar.ViewHolder> {
+public class affiliateRecycler extends RecyclerView.Adapter<affiliateRecycler.ViewHolder> {
 
     private List<String> mData;
     String[] collectText;
@@ -30,7 +30,7 @@ public class instGameRecyclelar extends RecyclerView.Adapter<instGameRecyclelar.
     private ItemClickListener mClickListener;
 
     // data is passed into the constructor
-    instGameRecyclelar(Context context, List<String> data) {
+    affiliateRecycler(Context context, List<String> data) {
         this.mInflater = LayoutInflater.from(context);
         this.mData = data;
     }
@@ -38,7 +38,7 @@ public class instGameRecyclelar extends RecyclerView.Adapter<instGameRecyclelar.
     // inflates the row layout from xml when needed
     @Override
     public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        View view= mInflater.inflate(R.layout.webpages, parent, false);
+        View view= mInflater.inflate(R.layout.webpages_affiliate, parent, false);
         return new ViewHolder(view);
     }
 

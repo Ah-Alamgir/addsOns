@@ -7,14 +7,17 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
+import android.text.Layout;
 import android.util.Log;
 import android.view.Gravity;
+import android.view.LayoutInflater;
 import android.widget.LinearLayout;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AlertDialog;
+import androidx.constraintlayout.widget.ConstraintSet;
 
 
 import com.android.volley.Request;
@@ -49,6 +52,7 @@ import java.util.ArrayList;
 
 public class autoLoad {
     public static String userName = "@hanif";
+    public static int layoutId = R.layout.webpages;;
     public static int addShowed = 3;
     public static int points = 500;
     static RewardedAd mRewardedAd;
@@ -363,8 +367,9 @@ public class autoLoad {
 
 
     public static  ArrayList<String> instGame = new ArrayList<>();
-    public static ArrayList<String> webSite= new ArrayList<>();
+    public static ArrayList<String> webSites= new ArrayList<>();
     public static ArrayList<String> home= new ArrayList<>();
+    public static  ArrayList<String> affiliates = new ArrayList<>();
 
     public static void getdata(String bucket) {
         DatabaseReference ref = FirebaseDatabase.getInstance().getReference(bucket);
@@ -373,11 +378,13 @@ public class autoLoad {
             public void onChildAdded(@NonNull DataSnapshot snapshot, @Nullable String s) {
                 String link = snapshot.getValue(String.class);
                 if(bucket == "web"){
-                    webSite.add(link);
+                    webSites.add(link);
                 }else if (bucket == "instantGame") {
                     instGame.add(link);
                 }else if (bucket == "home"){
                     home.add(link);
+                } else if (bucket=="affliate") {
+                    affiliates.add(link);
                 }
 
             }
@@ -409,7 +416,8 @@ public class autoLoad {
             getdata("home");
         } else if (bucket== "home") {
             getdata("instantGame");
-
+        }else if (bucket== "instantGame"){
+            getdata("affliate");
         }
 
     }

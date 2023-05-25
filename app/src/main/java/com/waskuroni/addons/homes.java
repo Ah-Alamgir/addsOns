@@ -35,6 +35,7 @@ public class homes extends AppCompatActivity {
 
         drawerLayout = findViewById(R.id.drawer_layout);
         navigationView = findViewById(R.id.nav_View);
+        navigationView.setItemIconTintList(null);
         imageMenu = findViewById(R.id.imageMenu);
 
         toggle = new ActionBarDrawerToggle(homes.this, drawerLayout, R.string.open, R.string.close);
@@ -217,8 +218,8 @@ public class homes extends AppCompatActivity {
                 startActivity(sendIntent);
             } else if (id == R.id.About) {
                 startActivity(new Intent(homes.this, aboutUs.class));
-            } else if (id == R.id.web) {
-                startActivity(new Intent(homes.this, visitWebsite.class));
+            } else if (id == R.id.affilia) {
+                startActivity(new Intent(homes.this, Affiliate.class));
             }
 
             return false;

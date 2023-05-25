@@ -23,7 +23,7 @@ import java.util.GregorianCalendar;
 public class instantGame extends AppCompatActivity {
 
     instGameRecyclelar adapter;
-    static String link,key;
+
 
     RecyclerView recyclerView;
     @Override
@@ -32,9 +32,12 @@ public class instantGame extends AppCompatActivity {
         setContentView(R.layout.activity_instant_game);
 
 
+
+        autoLoad.layoutId = R.layout.activity_instant_game;
         recyclerView = findViewById(R.id.recycle);
         recyclerView.setHasFixedSize(true);
         adapter = new instGameRecyclelar(this, autoLoad.instGame);
+
 
 
         StaggeredGridLayoutManager staggeredGridLayoutManager = new StaggeredGridLayoutManager(3, StaggeredGridLayoutManager.VERTICAL);

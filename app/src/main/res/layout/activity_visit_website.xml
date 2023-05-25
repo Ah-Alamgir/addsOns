@@ -8,6 +8,7 @@
     tools:context=".visitWebsite">
 
     <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/webRecycle"
         android:layout_width="409dp"
         android:layout_height="657dp" />
 </LinearLayout>
