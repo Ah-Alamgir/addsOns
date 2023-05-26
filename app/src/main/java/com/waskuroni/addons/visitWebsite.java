@@ -5,6 +5,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import androidx.recyclerview.widget.StaggeredGridLayoutManager;
 
 import android.os.Bundle;
+import android.util.Log;
 
 public class visitWebsite extends AppCompatActivity {
 
@@ -22,6 +23,7 @@ public class visitWebsite extends AppCompatActivity {
         recyclerView = findViewById(R.id.webRecycle);
         recyclerView.setHasFixedSize(true);
         adapter = new visitwebsiteRecycler(this, autoLoad.webSites);
+        Log.d("limks", String.valueOf(autoLoad.webSites));
 
 
 

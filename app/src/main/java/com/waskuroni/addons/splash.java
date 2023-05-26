@@ -31,7 +31,7 @@ public class splash extends AppCompatActivity {
 
 
 
-        autoLoad.getdata("home");
+        autoLoad.getdata("web");
 
         nexts = findViewById(R.id.next);
         nexts.setVisibility(View.INVISIBLE);
