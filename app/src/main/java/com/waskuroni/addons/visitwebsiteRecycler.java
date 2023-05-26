@@ -21,7 +21,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 
-public class instGameRecyclelar extends RecyclerView.Adapter<instGameRecyclelar.ViewHolder> {
+public class visitwebsiteRecycler extends RecyclerView.Adapter<visitwebsiteRecycler.ViewHolder> {
 
     private List<String> mData;
     String[] collectText;
@@ -31,7 +31,7 @@ public class instGameRecyclelar extends RecyclerView.Adapter<instGameRecyclelar.
     private ItemClickListener mClickListener;
 
     // data is passed into the constructor
-    instGameRecyclelar(Context context, List<String> data) {
+    visitwebsiteRecycler(Context context, List<String> data) {
         this.mInflater = LayoutInflater.from(context);
         this.mData = data;
         this.mContext = context;
@@ -40,7 +40,7 @@ public class instGameRecyclelar extends RecyclerView.Adapter<instGameRecyclelar.
     // inflates the row layout from xml when needed
     @Override
     public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        View view= mInflater.inflate(R.layout.webpages_instantgame, parent, false);
+        View view= mInflater.inflate(R.layout.webpages, parent, false);
         return new ViewHolder(view);
     }
 
@@ -88,10 +88,10 @@ public class instGameRecyclelar extends RecyclerView.Adapter<instGameRecyclelar.
 
         ViewHolder(View itemView) {
             super(itemView);
-            gameName = itemView.findViewById(R.id.gameNAmess);
-            collectsgame = itemView.findViewById(R.id.collectgame);
-            imageView  = itemView.findViewById(R.id.gameImageed);
-            cardView = itemView.findViewById(R.id.cardViewgame);
+            gameName = itemView.findViewById(R.id.gameNAme);
+            collectsgame = itemView.findViewById(R.id.collect);
+            imageView  = itemView.findViewById(R.id.gameImage);
+            cardView = itemView.findViewById(R.id.cardView3);
             itemView.setOnClickListener(this);
         }
 

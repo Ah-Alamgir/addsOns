@@ -8,7 +8,7 @@ import android.os.Bundle;
 
 public class visitWebsite extends AppCompatActivity {
 
-    instGameRecyclelar adapter;
+    visitwebsiteRecycler adapter;
 
 
     RecyclerView recyclerView;
@@ -21,7 +21,7 @@ public class visitWebsite extends AppCompatActivity {
         autoLoad.layoutId = R.layout.webpages;
         recyclerView = findViewById(R.id.webRecycle);
         recyclerView.setHasFixedSize(true);
-        adapter = new instGameRecyclelar(this, autoLoad.webSites);
+        adapter = new visitwebsiteRecycler(this, autoLoad.webSites);
 
 
 

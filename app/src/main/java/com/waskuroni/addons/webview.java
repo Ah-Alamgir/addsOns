@@ -3,28 +3,31 @@ package com.waskuroni.addons;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
+import android.util.Log;
 import android.webkit.WebView;
 
 public class webview extends AppCompatActivity {
 
     public static String link;
-    WebView webview;
+    public static String collectpoints;
+    WebView webs;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_webview);
 
 
-        webview =  findViewById(R.id.web);
-        webview.loadUrl(link);
+        webs =  findViewById(R.id.web);
+        webs.loadUrl(link);
+        Log.d("limks", link);
 
     }
 
 
     @Override
     public void onBackPressed() {
-        if (webview.canGoBack()) {
-            webview.goBack();
+        if (webs.canGoBack()) {
+            webs.goBack();
         }else {
             super.onBackPressed();
             finish();
