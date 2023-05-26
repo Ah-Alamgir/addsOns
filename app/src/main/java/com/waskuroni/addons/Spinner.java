@@ -1,10 +1,14 @@
 package com.waskuroni.addons;
 
 
+import android.app.admin.DeviceAdminService;
 import android.os.Bundle;
 import android.os.CountDownTimer;
 import android.util.Log;
 import android.view.View;
+import android.view.animation.Animation;
+import android.view.animation.DecelerateInterpolator;
+import android.view.animation.RotateAnimation;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.Toast;
@@ -14,9 +18,19 @@ import androidx.appcompat.app.AppCompatActivity;
 import java.util.Random;
 
 public class Spinner extends AppCompatActivity {
-    Button btnSpin;
-    ImageView ivWheel;
     CountDownTimer timer;
+
+    final int[] sector = {25,5,15,5,15,5,25,15,5,100,5,15};
+    final int[] sectorDegrees = new int[sector.length];
+    int randomSectorIndex = 0;
+
+    ImageView ivWheel;
+    Button btnSpin;
+
+    boolean spinning = false;
+    int earningRecord = 0;
+    Random random = new Random();
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -27,42 +41,56 @@ public class Spinner extends AppCompatActivity {
         btnSpin = findViewById(R.id.Spin);
         ivWheel = findViewById(R.id.ivWheel);
 
-        // creating an object of Random class
+        generateSectorDegres();
 
-        Random random = new Random();
+        btnSpin.setOnClickListener(view -> {
 
-        // on click listener for btnSpin
-        btnSpin.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
+            if(!spinning){
+                spinning = true;
+                randomSectorIndex  = random.nextInt(sector.length);
+                int randomDegree =  generateRandomDegreetoSpin();
+                RotateAnimation rotateAnimation = new RotateAnimation(0, randomDegree,
+                        RotateAnimation.RELATIVE_TO_SELF, 0.5f,
+                        RotateAnimation.RELATIVE_TO_SELF, 0.5f);
+                rotateAnimation.setDuration(1000);
+                rotateAnimation.setFillAfter(true);
+                rotateAnimation.setInterpolator(new DecelerateInterpolator());
 
-                btnSpin.setEnabled(false);
-
-                // reading random value between 10 to 30
-                int spin = random.nextInt(20)+10;
-                Log.d("spins", String.valueOf(spin));
-
-                spin = spin * 36;
-
-                // timer for each degree movement
-                timer = new CountDownTimer(spin*8,1) {
+                rotateAnimation.setAnimationListener(new Animation.AnimationListener() {
                     @Override
-                    public void onTick(long l) {
-                        // rotate the wheel
-                        float rotation = ivWheel.getRotation()+1;
-                        ivWheel.setRotation(rotation);
+                    public void onAnimationStart(Animation animation) {
+
                     }
 
                     @Override
-                    public void onFinish() {
-                        // enabling the button again
-                        btnSpin.setEnabled(true);
-                        Toast.makeText(getBaseContext(), "You Won !!" , Toast.LENGTH_SHORT ).show();
+                    public void onAnimationEnd(Animation animation) {
+                        int earnedCoin = sector[sector.length-(randomSectorIndex+1)];
+                        spinning= false;
+                        Toast.makeText(Spinner.this, String.valueOf(earnedCoin), Toast.LENGTH_SHORT).show();
                     }
-                }.start();
 
+                    @Override
+                    public void onAnimationRepeat(Animation animation) {
+
+                    }
+                });
+
+                ivWheel.startAnimation(rotateAnimation);
             }
+
         });
 
+    }
+
+    private int generateRandomDegreetoSpin() {
+        return (360*sector.length)+ sectorDegrees[randomSectorIndex];
+    }
+
+
+    public void generateSectorDegres(){
+        int sectorDegreee = 360/sector.length;
+        for(int i = 0; i < sector.length; i++){
+            sectorDegrees[i] = sectorDegreee*(i+1);
+        }
     }
 }

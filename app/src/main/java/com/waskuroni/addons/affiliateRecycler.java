@@ -1,6 +1,7 @@
 package com.waskuroni.addons;
 
 import android.content.Context;
+import android.content.Intent;
 import android.text.Layout;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -22,7 +23,7 @@ import java.util.List;
 
 
 public class affiliateRecycler extends RecyclerView.Adapter<affiliateRecycler.ViewHolder> {
-
+    Context lcontext;
     private List<String> mData;
     String[] collectText;
     private static Layout layout;
@@ -34,6 +35,7 @@ public class affiliateRecycler extends RecyclerView.Adapter<affiliateRecycler.Vi
     affiliateRecycler(Context context, List<String> data) {
         this.mInflater = LayoutInflater.from(context);
         this.mData = data;
+        this.lcontext = context;
     }
 
     // inflates the row layout from xml when needed
@@ -63,10 +65,14 @@ public class affiliateRecycler extends RecyclerView.Adapter<affiliateRecycler.Vi
         holder.prices.setText(collectText[1]);
         holder.gameName.setText(collectText[2]);
         holder.dePrices.setText(collectText[4]);
-        webLink.add(collectText[1]);
-        Log.d("images", collectText[3]);
+        webLink.add(collectText[0]);
         Picasso.get().load(collectText[3].toString().trim()).into(holder.imageView);
         holder.cardView.startAnimation(AnimationUtils.loadAnimation(holder.itemView.getContext(), R.anim.anim1));
+
+        holder.cardView.setOnClickListener(view -> {
+            webview.link = webLink.get(position);
+            lcontext.startActivity(new Intent(lcontext, webview.class));
+        });
     }
 
     // total number of rows

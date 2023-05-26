@@ -20,8 +20,10 @@
         android:layout_marginTop="24dp"
         android:backgroundTint="#FE8F00"
         android:text="Spin"
+        android:textAllCaps="false"
         android:textSize="20sp"
         android:textStyle="bold"
+        LuckyWheel:cornerRadius="20dp"
         LuckyWheel:layout_constraintEnd_toEndOf="parent"
         LuckyWheel:layout_constraintStart_toStartOf="parent"
         LuckyWheel:layout_constraintTop_toBottomOf="@+id/ivWheel" />
@@ -30,10 +32,10 @@
         android:id="@+id/ivTarget"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="8dp"
+        android:layout_marginBottom="-25dp"
+        android:rotation="45"
         LuckyWheel:layout_constraintBottom_toTopOf="@+id/ivWheel"
-        LuckyWheel:layout_constraintEnd_toEndOf="parent"
-        LuckyWheel:layout_constraintStart_toStartOf="parent"
+        LuckyWheel:layout_constraintEnd_toEndOf="@+id/ivWheel"
         LuckyWheel:srcCompat="@drawable/errow" />
 
     <TextView

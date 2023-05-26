@@ -18,8 +18,11 @@ public class webview extends AppCompatActivity {
 
 
         webs =  findViewById(R.id.web);
+
+
+        webs.getSettings().setJavaScriptEnabled(true);
+        webs.getSettings().setAllowFileAccess(true);
         webs.loadUrl(link);
-        Log.d("limks", link);
 
     }
 
