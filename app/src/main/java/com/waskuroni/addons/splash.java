@@ -31,6 +31,7 @@ public class splash extends AppCompatActivity {
 
 
 
+
         autoLoad.getdata("web");
 
         nexts = findViewById(R.id.next);
@@ -42,6 +43,7 @@ public class splash extends AppCompatActivity {
         String username = pref.getString("name", "@hanif");
         if (Objects.equals(username, "@hanif")){
             nexts.setVisibility(View.VISIBLE);
+
         }else {
             autoLoad.loadAdd(this);
             autoLoad.userName = username;
@@ -63,6 +65,7 @@ public class splash extends AppCompatActivity {
             click= click+1;
             if(click==3){
                 startActivity(new Intent(this, signIn.class));
+                finish();
 
             }else {
                 viewFlipper.showNext();
