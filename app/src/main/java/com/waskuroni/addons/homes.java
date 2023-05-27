@@ -54,6 +54,7 @@ public class homes extends AppCompatActivity {
 
         addclicked.setOnClickListener(v -> startActivity(new Intent(this, playAds.class)));
         ref.setOnClickListener(v -> startActivity(new Intent(this, refetence.class)));
+        profile.setOnClickListener(v -> startActivity(new Intent(this,profile.class)));
 
         v1 = findViewById(R.id.v1);
         v2 = findViewById(R.id.v2);

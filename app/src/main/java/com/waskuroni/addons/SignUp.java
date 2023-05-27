@@ -73,13 +73,6 @@ public class SignUp extends AppCompatActivity {
 
 
 
-    public void save(String userName){
-        autoLoad.userName = userName;
-        SharedPreferences pref = getApplicationContext().getSharedPreferences("MyPref", 0);
-        SharedPreferences.Editor editor = pref.edit();
-        editor.putString("name", userName);
-        editor.apply();
 
-    }
 
 }

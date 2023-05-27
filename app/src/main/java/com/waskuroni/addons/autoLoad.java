@@ -3,23 +3,21 @@ package com.waskuroni.addons;
 
 import android.annotation.SuppressLint;
 import android.app.Activity;
+import android.content.ContentValues;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
-import android.text.Layout;
 import android.util.Log;
 import android.view.Gravity;
-import android.view.LayoutInflater;
 import android.widget.LinearLayout;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AlertDialog;
-import androidx.constraintlayout.widget.ConstraintSet;
 
 
 import com.android.volley.Request;
@@ -311,6 +309,7 @@ public class autoLoad {
                                 .document(authResult.getUser().getUid())
                               .set(new signDetail(name, email, password, phone))
                               .addOnSuccessListener(aVoid -> {
+                                  insertData(name, email, password, phone );
                                   Toast.makeText(context, "Signup Successful", Toast.LENGTH_SHORT).show();
                                   String[] mail = email.split("@");
                                   if (mail[0].contains(".")){
@@ -453,10 +452,23 @@ public class autoLoad {
             db.execSQL(sql);
         }
 
+
         @Override
         public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
 
         }
+    }
+
+    private static void insertData(String name, String email, String password, String phone){
+        ContentValues values = new ContentValues();
+        values.put("NAME", name);
+        values.put("EMAIL", email);
+        values.put("PASSWORD", password);
+
+        values.put("PHONE", phone);
+        SQLiteDatabase database = null;
+        database.insert("PRODUCT", null, values);
+
     }
 
 }
