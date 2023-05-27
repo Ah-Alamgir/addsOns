@@ -66,6 +66,7 @@ public class Spinner extends AppCompatActivity {
                     public void onAnimationEnd(Animation animation) {
                         int earnedCoin = sector[sector.length-(randomSectorIndex+1)];
                         spinning= false;
+                        autoLoad.savePoints(autoLoad.userName, earnedCoin+autoLoad.points);
                         Toast.makeText(Spinner.this, String.valueOf(earnedCoin), Toast.LENGTH_SHORT).show();
                     }
 

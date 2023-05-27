@@ -7,6 +7,8 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
+import android.database.sqlite.SQLiteDatabase;
+import android.database.sqlite.SQLiteOpenHelper;
 import android.text.Layout;
 import android.util.Log;
 import android.view.Gravity;
@@ -432,6 +434,29 @@ public class autoLoad {
         editor.putString("name", userName);
         editor.apply();
         context.startActivity(new Intent(context, homes.class));
+    }
+
+
+
+
+
+    public static class sqlDatabase extends SQLiteOpenHelper{
+        private static final String dbName = "userDara";
+        private static final int dbVersion = 1;
+        public sqlDatabase(@Nullable Context context) {
+            super(context, dbName, null, dbVersion);
+        }
+
+        @Override
+        public void onCreate(SQLiteDatabase db) {
+        String sql = "CREATE TABLE  PRODUCT (_id INTEGER PRIMARY KEY AUTOINCREMENT , NAME TEXT, EMAIL TEXT, PASSWORD TEXT, PHONE TEXT)";
+            db.execSQL(sql);
+        }
+
+        @Override
+        public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
+
+        }
     }
 
 }
