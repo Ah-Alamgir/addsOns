@@ -66,8 +66,9 @@ public class visitwebsiteRecycler extends RecyclerView.Adapter<visitwebsiteRecyc
         Picasso.get().load(collectText[3].toString().trim()).into(holder.imageView);
         holder.cardView.startAnimation(AnimationUtils.loadAnimation(holder.itemView.getContext(), R.anim.anim1));
         holder.cardView.setOnClickListener(v -> {
-            webview.link = collectText[0].trim();
-            webview.collectpoints = collectText[2];
+            String[] getPoints = mData.get(position).split(",");
+            webview.link = getPoints[0].trim();
+            webview.collectpoints = getPoints[1].trim();
             mContext.startActivity(new Intent(mContext, webview.class));
         });
     }
