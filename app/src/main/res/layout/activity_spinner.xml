@@ -6,7 +6,7 @@
     android:id="@+id/btnSpin"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/spin_back"
+    android:background="@drawable/side_nav_bar"
     android:gravity="center"
     android:orientation="vertical"
     tools:context=".Spinner"
@@ -16,7 +16,10 @@
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:visibility="visible">
+        android:visibility="visible"
+        LuckyWheel:layout_constraintEnd_toEndOf="parent"
+        LuckyWheel:layout_constraintStart_toStartOf="parent"
+        LuckyWheel:layout_constraintTop_toTopOf="parent">
 
         <LinearLayout
             android:id="@+id/appBar"
@@ -28,13 +31,14 @@
             android:paddingEnd="15dp"
             android:visibility="visible">
 
-            <ImageView
-                android:id="@+id/imageMenu"
+            <ImageButton
+                android:id="@+id/spineback"
                 android:layout_width="30dp"
                 android:layout_height="30dp"
                 android:layout_gravity="center"
-                android:src="@drawable/ic_back"
-                app:tint="#FFFFFF" />
+                android:background="#00FFFFFF"
+                android:contentDescription="spinback"
+                android:src="@drawable/ic_back" />
 
             <TextView
                 android:id="@+id/textTitle"
@@ -42,7 +46,7 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:layout_marginLeft="15dp"
-                android:text="Spin to check your luck"
+                android:text="500"
                 android:textColor="@color/white"
                 android:textSize="18sp"
                 android:textStyle="bold" />

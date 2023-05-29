@@ -25,11 +25,12 @@
             android:paddingRight="15dp"
             android:paddingBottom="15dp">
 
-            <com.google.android.material.card.MaterialCardView
+            <androidx.cardview.widget.CardView
                 android:layout_width="0dp"
                 android:layout_height="0dp"
-                app:cardBackgroundColor="#60FFFFFF"
+                app:cardBackgroundColor="#27FFFFFF"
                 app:cardCornerRadius="10dp"
+                app:cardElevation="0dp"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
@@ -46,14 +47,15 @@
                         android:layout_height="wrap_content"
                         android:layout_gravity="center"
                         android:layout_marginStart="10dp"
-                        android:layout_marginTop="20dp"
+                        android:layout_marginTop="60dp"
                         android:layout_marginEnd="10dp"
                         android:gravity="center"
                         android:text="Your reference code"
-                        android:textColor="@color/black"
+                        android:textColor="@color/white"
                         android:textSize="22sp"
                         android:textStyle="bold"
                         app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintHorizontal_bias="0.0"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toTopOf="parent" />
 
@@ -78,7 +80,6 @@
                             android:gravity="center"
                             android:text="Reference Code"
                             android:textColor="@color/pink"
-                            android:textSize="22sp"
                             android:textStyle="bold"
                             app:layout_constraintEnd_toEndOf="parent"
                             app:layout_constraintHorizontal_bias="0.5"
@@ -123,7 +124,8 @@
 
                     <ImageView
                         android:layout_width="250dp"
-                        android:layout_height="wrap_content"
+                        android:layout_height="250dp"
+                        android:layout_marginTop="32dp"
                         android:contentDescription="@string/app_name"
                         android:src="@drawable/reference_code_img"
                         app:layout_constraintBottom_toBottomOf="parent"
@@ -135,7 +137,7 @@
                 </androidx.constraintlayout.widget.ConstraintLayout>
 
 
-            </com.google.android.material.card.MaterialCardView>
+            </androidx.cardview.widget.CardView>
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 

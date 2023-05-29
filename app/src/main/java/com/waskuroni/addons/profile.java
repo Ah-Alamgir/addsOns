@@ -4,10 +4,12 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.util.Log;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageButton;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -20,11 +22,12 @@ import java.util.ArrayList;
 public class profile extends AppCompatActivity {
 
     Button editButton;
-    TextView setName;
-    EditText emailAddress;
-    EditText phoneNumber;
-    EditText youtube;
-    EditText instagram;
+    TextView setName,phoneNumber, emailAddress;
+
+    ImageButton youtube, Instagram;
+
+    String youtubeUrl, instaUrl;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -41,7 +44,22 @@ public class profile extends AppCompatActivity {
         emailAddress = findViewById(R.id.ema);
         phoneNumber = findViewById(R.id.ph);
         youtube = findViewById(R.id.youtu);
-        instagram = findViewById(R.id.insta);
+        Instagram = findViewById(R.id.insta);
+        ImageButton back = findViewById(R.id.profileback);
+
+        youtube.setOnClickListener(v -> {
+
+            Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse(youtubeUrl));
+            startActivity(intent);
+        });
+
+        Instagram.setOnClickListener(v -> {
+            Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse(instaUrl));
+            startActivity(intent);
+        });
+        back.setOnClickListener(v -> {
+            finish();
+        });
     }
 
 
@@ -58,8 +76,8 @@ public class profile extends AppCompatActivity {
                 setName.setText(value.getString("name"));
                 emailAddress.setText(value.getString("email"));
                 phoneNumber.setText(value.getString("phone"));
-                youtube.setText(value.getString("youtube"));
-                instagram.setText(value.getString("instagram"));
+                youtubeUrl = value.getString("youtube");
+                instaUrl = value.getString("instagram");
             }catch(Exception e) {
                 Log.d("users", e.getMessage());
                 Toast.makeText(this, e.getMessage(), Toast.LENGTH_SHORT).show();

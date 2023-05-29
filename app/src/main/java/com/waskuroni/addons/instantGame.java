@@ -10,6 +10,7 @@ import androidx.recyclerview.widget.StaggeredGridLayoutManager;
 
 import android.os.Bundle;
 import android.util.Log;
+import android.widget.ImageButton;
 
 import com.google.firebase.database.ChildEventListener;
 import com.google.firebase.database.DataSnapshot;
@@ -24,13 +25,14 @@ public class instantGame extends AppCompatActivity {
 
     instGameRecyclelar adapter;
 
-
     RecyclerView recyclerView;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_instant_game);
 
+        ImageButton insBack = findViewById(R.id.instGameback);
+        insBack.setOnClickListener(v -> finish());
 
 
         autoLoad.layoutId = R.layout.activity_instant_game;

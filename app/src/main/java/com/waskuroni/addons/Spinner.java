@@ -10,7 +10,9 @@ import android.view.animation.Animation;
 import android.view.animation.DecelerateInterpolator;
 import android.view.animation.RotateAnimation;
 import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.ImageView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -27,6 +29,7 @@ public class Spinner extends AppCompatActivity {
     ImageView ivWheel;
     Button btnSpin;
 
+
     boolean spinning = false;
     int earningRecord = 0;
     Random random = new Random();
@@ -40,8 +43,24 @@ public class Spinner extends AppCompatActivity {
         // initializing views
         btnSpin = findViewById(R.id.Spin);
         ivWheel = findViewById(R.id.ivWheel);
+        TextView spinPOints = findViewById(R.id.textTitle);
+        spinPOints.setText(String.valueOf(autoLoad.points));
 
         generateSectorDegres();
+
+
+
+
+
+
+
+
+
+
+
+
+        ImageButton backs = findViewById(R.id.spineback);
+        backs.setOnClickListener(v -> finish());
 
         btnSpin.setOnClickListener(view -> {
 
@@ -66,8 +85,10 @@ public class Spinner extends AppCompatActivity {
                     public void onAnimationEnd(Animation animation) {
                         int earnedCoin = sector[sector.length-(randomSectorIndex+1)];
                         spinning= false;
-                        autoLoad.savePoints(autoLoad.userName, earnedCoin+autoLoad.points);
-                        Toast.makeText(Spinner.this, String.valueOf(earnedCoin), Toast.LENGTH_SHORT).show();
+                        autoLoad.points =earnedCoin+ autoLoad.points;
+                        autoLoad.savePoints(autoLoad.userName, autoLoad.points);
+                        Toast.makeText(Spinner.this, String.valueOf(earnedCoin), Toast.LENGTH_LONG).show();
+                        spinPOints.setText(String.valueOf(autoLoad.points));
                     }
 
                     @Override
