@@ -41,18 +41,22 @@ import com.google.android.gms.ads.rewarded.RewardedAdLoadCallback;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.ChildEventListener;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.FirebaseFirestore;
 
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
 
 
 public class autoLoad {
+    public static FirebaseAuth firebaseAuth = FirebaseAuth.getInstance();;
+    public static FirebaseFirestore db =FirebaseFirestore.getInstance();;
     public static String userName = "@hanif";
     public static int layoutId = R.layout.webpages;;
     public static int addShowed = 3;
@@ -301,90 +305,100 @@ public class autoLoad {
     }
     
     
-    public static void signup(String name,String phone, String email, String password, Context context  ){
-        FirebaseAuth firebaseAuth = FirebaseAuth.getInstance();
-        FirebaseFirestore firebaseFirestore = FirebaseFirestore.getInstance();
-        ProgressDialog pd = new ProgressDialog(context);
-        pd.setMessage("Signing up...");
-        pd.show();
+    public static String signup(String name,String phone, String email, String password  ){
+        Map<String, Object> newInfor = new HashMap<>();
+        newInfor.put("name", name);
+        newInfor.put("phone", phone);
+        newInfor.put("email", email);
+        newInfor.put("password", password);
         firebaseAuth.createUserWithEmailAndPassword(email, password)
                 .addOnSuccessListener(authResult ->
-
-                        firebaseFirestore.collection("users")
+                        db.collection("users")
                                 .document(authResult.getUser().getUid())
-                              .set(new signDetail(name, email, password, phone))
+                              .set(newInfor)
                               .addOnSuccessListener(aVoid -> {
-                                  pd.cancel();
-                                  Toast.makeText(context, "Signup Successful", Toast.LENGTH_SHORT).show();
-                                  String[] mail = email.split("@");
-                                  if (mail[0].contains(".")){
-                                      userName = mail[0].replace(".","*");
-                                  }else {
-                                      userName = mail[0];
-                                  }
 
+                                  userName = firebaseAuth.getCurrentUser().getUid();
                                   points = 500;
                                   savePoints(userName, points);
-                                  context.startActivity(new Intent(context,homes.class));
-                                  saveSharePref(name, phone, email, password,context);
+                                  result = "success";
 
 
                               })
-                              .addOnFailureListener(e -> Toast.makeText(context, e.getMessage(), Toast.LENGTH_SHORT).show())
+                              .addOnFailureListener(e -> result= e.getMessage())
                         )
 
                 .addOnFailureListener(e -> {
-                    Toast.makeText(context, e.getMessage(), Toast.LENGTH_SHORT).show();
-                    pd.dismiss();
+                    result= e.getMessage();
                 });
+        return result;
 
 
     }
 
 
-    public static void saveSharePref(String name,String phone, String email, String password, Context context){
+//    public static void saveSharePref(String name,String phone, String email, String password, Context context){
+//
+//        SharedPreferences pref = context.getSharedPreferences("MyPref", 0);
+//        SharedPreferences.Editor editor = pref.edit();
+//        editor.putString("name", name);
+//        editor.putString("phone", phone);
+//        editor.putString("email", email);
+//        editor.putString("password", password);
+//        editor.apply();
+//        context.startActivity(new Intent(context, homes.class));
+//    }
 
-        SharedPreferences pref = context.getSharedPreferences("MyPref", 0);
-        SharedPreferences.Editor editor = pref.edit();
-        editor.putString("name", name);
-        editor.putString("phone", phone);
-        editor.putString("email", email);
-        editor.putString("password", password);
-        editor.apply();
-        context.startActivity(new Intent(context, homes.class));
-    }
 
 
-    public static String getuserDatafromfirebaseAuth(){
-        FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+//    public static ArrayList<String> userData = new ArrayList<>();
+//
+//    public static ArrayList<String> getuserdetailsFromFirebase(Activity activity){
+//        DocumentReference docRef = db.collection("users").document(firebaseAuth.getCurrentUser().getUid());
+//        docRef.addSnapshotListener(activity, (value, error) -> {
+//            try {
+//                userData.add(value.getString("name"));
+//                userData.add(value.getString("phone"));
+//                userData.add(value.getString("email"));
+//                userData.add(value.getString("password"));
+//                userData.add(value.getString("youtube"));
+//                userData.add(value.getString("instagram"));
+//            }catch(Exception e) {
+//
+//            }
+//
+//        });
+//
+//        return userData;
+//    }
+//
 
-        Log.d("users", String.valueOf(user.getPhoneNumber()+user.getUid()+user.getPhoneNumber()));
-        return user.getUid();
-    }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    public static String result;
     
-    public static void signin(String email, String password, Context context){
-        ProgressDialog pd = new ProgressDialog(context);
-        pd.setMessage("loading");
-        pd.show();
+    public static String signin(String email, String password){
         Task<AuthResult> firebaseAuth = FirebaseAuth.getInstance().signInWithEmailAndPassword(email,password)
               .addOnSuccessListener(authResult -> {
-                  String[] mail = email.split("@");
-                  if (mail[0].contains(".")){
-                      userName = mail[0].replace(".","*");
-                  }else {
-                      userName = mail[0];
-                  }
-                  Toast.makeText(context, "Login Successful", Toast.LENGTH_SHORT).show();
-                  SharedPreferences pref = context.getSharedPreferences("MyPref", 0);
-                  SharedPreferences.Editor editor = pref.edit();
-                  editor.putString("name", userName);
-                  editor.putString("email", email);
-                  editor.putString("password", password);
-                  editor.apply();
-                  context.startActivity(new Intent(context, homes.class));
+                  userName = FirebaseAuth.getInstance().getCurrentUser().getUid();
+                  result= "success";
               })
-              .addOnFailureListener(e -> Toast.makeText(context, e.getMessage(), Toast.LENGTH_SHORT).show());
-        pd.dismiss();
+              .addOnFailureListener(e -> result= e.getMessage());
+        return result;
     }
     
     public static void resetPassword(String email, Context context){

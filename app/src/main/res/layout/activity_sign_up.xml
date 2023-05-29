@@ -137,6 +137,7 @@
     </LinearLayout>
 
     <Button
+        android:visibility="gone"
         android:id="@+id/googleSigns"
         android:layout_width="250dp"
         android:layout_height="wrap_content"

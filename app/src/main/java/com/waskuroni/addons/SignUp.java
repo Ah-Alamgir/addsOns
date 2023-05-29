@@ -33,19 +33,34 @@ public class SignUp extends AppCompatActivity {
         googleSign = findViewById(R.id.googleSigns);
         logPage=  findViewById(R.id.logspage);
 
+
+        String named= name.getText().toString().trim();
+        String emailed= email.getText().toString().trim();
+        String passworded= password.getText().toString().trim();
+        String phoned= phone.getText().toString().trim();
+
         register.setOnClickListener(v -> {
-            if (name.getText().toString().isEmpty()){
+            if (named.isEmpty()){
                 autoLoad.alart(this, "Enter your name");
-            } else if (email.getText().toString().isEmpty()) {
+            } else if (emailed.isEmpty()) {
                 autoLoad.alart(this, "Enter your email");
-            } else if (phone.getText().toString().isEmpty()) {
+            } else if (phoned.isEmpty()) {
                 autoLoad.alart(this, "Enter your phone");
-            } else if (password.getText().toString().isEmpty()) {
+            } else if (passworded.isEmpty()) {
                 autoLoad.alart(this, "Enter your password");
 
             }else {
-
-                autoLoad.signup(name.getText().toString(), phone.getText().toString(), email.getText().toString(), password.getText().toString().trim(), this);
+                ProgressDialog dialog = ProgressDialog.show(this, "Registering",
+                        "Loading. Please wait...", true);
+                String returned = autoLoad.signup(named,phoned,emailed,passworded);
+                if( returned == "success"){
+                    dialog.dismiss();
+                    startActivity(new Intent(SignUp.this, homes.class));
+                    finish();
+                }else {
+                    dialog.dismiss();
+                    autoLoad.alart(this, returned);
+                }
             }
         });
 

@@ -16,7 +16,7 @@
         android:theme="@style/Theme.Addons"
         tools:targetApi="31">
         <activity
-            android:name=".editProfileDetails"
+            android:name=".profileEdit"
             android:exported="false" />
         <activity
             android:name=".profile"

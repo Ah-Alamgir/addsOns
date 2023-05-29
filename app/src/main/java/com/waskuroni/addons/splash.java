@@ -5,10 +5,14 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.ImageButton;
 import android.widget.TextView;
 import android.widget.ViewFlipper;
+
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 
 import java.util.Objects;
 
@@ -39,14 +43,12 @@ public class splash extends AppCompatActivity {
 
 
 
-        SharedPreferences pref = getApplicationContext().getSharedPreferences("MyPref", 0);
-        String username = pref.getString("name", "@hanif");
-        if (Objects.equals(username, "@hanif")){
+        if (FirebaseAuth.getInstance().getCurrentUser() == null){
             nexts.setVisibility(View.VISIBLE);
 
         }else {
+            autoLoad.userName = FirebaseAuth.getInstance().getCurrentUser().getUid();
             autoLoad.loadAdd(this);
-            autoLoad.userName = username;
             Intent myIntent = new Intent(splash.this, homes.class);
             startActivity(myIntent);
             finish();

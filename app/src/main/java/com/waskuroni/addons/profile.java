@@ -2,44 +2,75 @@ package com.waskuroni.addons;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.Activity;
 import android.content.Intent;
-import android.database.Cursor;
-import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
+import android.util.Log;
 import android.widget.Button;
+import android.widget.EditText;
+import android.widget.TextView;
+import android.widget.Toast;
+
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.firestore.DocumentReference;
+import com.google.firebase.firestore.FirebaseFirestore;
 
 import java.util.ArrayList;
 
 public class profile extends AppCompatActivity {
 
     Button editButton;
+    TextView setName;
+    EditText emailAddress;
+    EditText phoneNumber;
+    EditText youtube;
+    EditText instagram;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_profile);
 
-        getSqliteDatabase();
-        editButton.setOnClickListener(v -> startActivity(new Intent(this, editProfileDetails.class)));
+
+        editButton = findViewById(R.id.edit);
+        getuserdetailsFromFirebase();
+        editButton.setOnClickListener(v -> startActivity(new Intent(this, profileEdit.class)));
+
+        setName = findViewById(R.id.naming);
+
+        emailAddress = findViewById(R.id.ema);
+        phoneNumber = findViewById(R.id.ph);
+        youtube = findViewById(R.id.youtu);
+        instagram = findViewById(R.id.insta);
     }
 
 
 
-    public void getSqliteDatabase(){
-        StringBuilder builder = new StringBuilder();
-        autoLoad.sqlDatabase sqlDatabase = new autoLoad.sqlDatabase(profile.this);
-        SQLiteDatabase database = sqlDatabase.getReadableDatabase();
-
-        Cursor cursor = database.rawQuery("SELECT NAME, EMAIL, PASSWORD, PHONE FROM PRODUCT", new String[]{});
-        if (cursor != null){
-            cursor.moveToFirst();
-            String name = cursor.getString(0);
-            String email = cursor.getString(1);
-            String password = cursor.getString(2);
-            String phone = cursor.getString(3);
-            builder.append(name).append(email).append(password).append(phone);
-        }
 
 
+
+    public void getuserdetailsFromFirebase(){
+        FirebaseAuth firebaseAuth = FirebaseAuth.getInstance();
+        FirebaseFirestore db = FirebaseFirestore.getInstance();
+        DocumentReference docRef = db.collection("users").document(firebaseAuth.getCurrentUser().getUid());
+        docRef.addSnapshotListener(this, (value, error) -> {
+            try {
+                setName.setText(value.getString("name"));
+                emailAddress.setText(value.getString("email"));
+                phoneNumber.setText(value.getString("phone"));
+                youtube.setText(value.getString("youtube"));
+                instagram.setText(value.getString("instagram"));
+            }catch(Exception e) {
+                Log.d("users", e.getMessage());
+                Toast.makeText(this, e.getMessage(), Toast.LENGTH_SHORT).show();
+            }
+
+        });
+
+       
     }
+
+
+
+
 }

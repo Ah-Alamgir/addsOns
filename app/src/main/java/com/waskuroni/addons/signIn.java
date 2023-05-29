@@ -60,7 +60,14 @@ public class signIn extends Activity {
             }else {
                 ProgressDialog dialog = ProgressDialog.show(this, "",
                         "Loading. Please wait...", true);
-                autoLoad.signin(emails.getText().toString(), passwords.getText().toString(), signIn.this);
+                if (autoLoad.signin(emails.getText().toString(), passwords.getText().toString())=="success"){
+                    dialog.dismiss();
+                    startActivity(new Intent(this, homes.class));
+                }else {
+                    dialog.dismiss();
+                    autoLoad.alart(this, autoLoad.signin(emails.getText().toString(), passwords.getText().toString()));
+                }
+
             }
 
         });

@@ -33,6 +33,8 @@ public class homes extends AppCompatActivity {
 
 
 
+
+
         drawerLayout = findViewById(R.id.drawer_layout);
         navigationView = findViewById(R.id.nav_View);
         navigationView.setItemIconTintList(null);
