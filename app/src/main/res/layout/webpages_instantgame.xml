@@ -14,8 +14,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="end"
-        android:background="@drawable/badge_background"
-        android:backgroundTint="@color/pink">
+        android:background="@drawable/badge_background_pink">
 
         <ImageView
             android:id="@+id/imageView2"

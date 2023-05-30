@@ -69,9 +69,10 @@ public class homeRecycler extends RecyclerView.Adapter<homeRecycler.ViewHolder> 
         Picasso.get().load(collectText[3].toString().trim()).into(holder.imageView);
         holder.cardView.startAnimation(AnimationUtils.loadAnimation(holder.itemView.getContext(), R.anim.anim1));
         if(position>5 && position<12){
-            holder.clicked.setBackgroundColor(Color.parseColor("#FF03DAC5"));
+            holder.liniarLayout.setBackgroundResource(R.drawable.badge_background);
+            holder.clicked.setBackgroundColor(Color.parseColor("#5FCC64"));
         }else if(position>11){
-            holder.liniarLayout.setBackgroundColor(Color.parseColor("#FF018786"));
+            holder.liniarLayout.setBackgroundResource(R.drawable.badge_background_darkgreen);
             holder.clicked.setBackgroundColor(Color.parseColor("#FF018786"));
         }
         holder.cardView.setOnClickListener(v -> {
