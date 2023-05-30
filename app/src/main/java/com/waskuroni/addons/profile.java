@@ -58,8 +58,12 @@ public class profile extends AppCompatActivity {
             startActivity(intent);
         });
         back.setOnClickListener(v -> {
+            startActivity(new Intent(this, homes.class));
             finish();
         });
+
+
+
     }
 
 
@@ -88,7 +92,11 @@ public class profile extends AppCompatActivity {
        
     }
 
-
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+        startActivity(new Intent(this,homes.class));
+    }
 
 
 }

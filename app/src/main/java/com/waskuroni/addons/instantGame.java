@@ -8,6 +8,7 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.recyclerview.widget.StaggeredGridLayoutManager;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.widget.ImageButton;
@@ -35,7 +36,7 @@ public class instantGame extends AppCompatActivity {
         insBack.setOnClickListener(v -> finish());
 
 
-        autoLoad.layoutId = R.layout.activity_instant_game;
+
         recyclerView = findViewById(R.id.recycle);
         recyclerView.setHasFixedSize(true);
         adapter = new instGameRecyclelar(this, autoLoad.instGame);
@@ -52,7 +53,9 @@ public class instantGame extends AppCompatActivity {
     }
 
 
-
-
-
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+        startActivity(new Intent(this,homes.class));
+    }
 }

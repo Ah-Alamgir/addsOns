@@ -6,6 +6,7 @@ import static com.waskuroni.addons.autoLoad.userName;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.widget.Button;
@@ -73,5 +74,11 @@ public class refetence extends AppCompatActivity {
             }
 
         });
+    }
+
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+        startActivity(new Intent(this,homes.class));
     }
 }

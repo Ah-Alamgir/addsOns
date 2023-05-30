@@ -47,11 +47,11 @@ public class splash extends AppCompatActivity {
             nexts.setVisibility(View.VISIBLE);
 
         }else {
-            autoLoad.userName = FirebaseAuth.getInstance().getCurrentUser().getUid();
-            autoLoad.loadAdd(this);
-            Intent myIntent = new Intent(splash.this, homes.class);
-            startActivity(myIntent);
-            finish();
+                autoLoad.userName = FirebaseAuth.getInstance().getCurrentUser().getUid();
+                autoLoad.loadAdd(this);
+                Intent myIntent = new Intent(splash.this, homes.class);
+                startActivity(myIntent);
+                finish();
         }
 
 

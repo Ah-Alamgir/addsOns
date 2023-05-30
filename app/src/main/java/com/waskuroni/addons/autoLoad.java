@@ -423,8 +423,8 @@ public class autoLoad {
 
     public static  ArrayList<String> instGame = new ArrayList<>();
     public static ArrayList<String> webSites= new ArrayList<>();
-    public static ArrayList<String> home= new ArrayList<>();
     public static  ArrayList<String> affiliates = new ArrayList<>();
+
 
     public static void getdata(String bucket) {
         DatabaseReference ref = FirebaseDatabase.getInstance().getReference(bucket);
@@ -436,13 +436,13 @@ public class autoLoad {
                     webSites.add(link);
                 }else if (bucket == "instantGame") {
                     instGame.add(link);
-                }else if (bucket == "home"){
-                    home.add(link);
-                } else if (bucket=="affliate") {
+                }else if (bucket=="affliate") {
                     affiliates.add(link);
                 }
 
+
             }
+
 
             @Override
             public void onChildChanged(@NonNull DataSnapshot snapshot, @Nullable String previousChildName) {
@@ -461,17 +461,14 @@ public class autoLoad {
 
             @Override
             public void onCancelled(@NonNull DatabaseError error) {
-
             }
 
 
         });
 
         if(bucket == "web"){
-            getdata("home");
-        } else if (bucket== "home") {
             getdata("instantGame");
-        }else if (bucket== "instantGame"){
+        } else if (bucket== "instantGame"){
             getdata("affliate");
         }
 
