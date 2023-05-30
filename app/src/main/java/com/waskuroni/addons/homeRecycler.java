@@ -2,12 +2,15 @@ package com.waskuroni.addons;
 
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.Color;
 import android.text.Layout;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.animation.AnimationUtils;
+import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import androidx.cardview.widget.CardView;
@@ -65,6 +68,12 @@ public class homeRecycler extends RecyclerView.Adapter<homeRecycler.ViewHolder> 
         holder.gameName.setText(collectText[2]);
         Picasso.get().load(collectText[3].toString().trim()).into(holder.imageView);
         holder.cardView.startAnimation(AnimationUtils.loadAnimation(holder.itemView.getContext(), R.anim.anim1));
+        if(position>5 && position<12){
+            holder.clicked.setBackgroundColor(Color.parseColor("#FF03DAC5"));
+        }else if(position>11){
+            holder.liniarLayout.setBackgroundColor(Color.parseColor("#FF018786"));
+            holder.clicked.setBackgroundColor(Color.parseColor("#FF018786"));
+        }
         holder.cardView.setOnClickListener(v -> {
             String[] getPoints = mData.get(position).split(",");
             webview.link = getPoints[0].trim();
@@ -90,6 +99,8 @@ public class homeRecycler extends RecyclerView.Adapter<homeRecycler.ViewHolder> 
         TextView gameName;
         TextView collectsgame;
         ImageView  imageView;
+        Button clicked;
+        LinearLayout liniarLayout;
         CardView cardView;
 
         ViewHolder(View itemView) {
@@ -98,6 +109,8 @@ public class homeRecycler extends RecyclerView.Adapter<homeRecycler.ViewHolder> 
             collectsgame = itemView.findViewById(R.id.collectgame);
             imageView  = itemView.findViewById(R.id.gameImageed);
             cardView = itemView.findViewById(R.id.cardViewgame);
+            liniarLayout = itemView.findViewById(R.id.liniar);
+            clicked = itemView.findViewById(R.id.button);
             itemView.setOnClickListener(this);
         }
 

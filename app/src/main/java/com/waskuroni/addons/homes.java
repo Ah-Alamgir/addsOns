@@ -150,20 +150,20 @@ public class homes extends AppCompatActivity {
 
 
 
-
+int j=0;
+    int k=0;
     public void creathomeRecycle(){
         try {
             for (int i = 0; i <18;i++){
                 if(i<6){
                     homeArrayList.add(autoLoad.instGame.get(i));
+                } else if(i>5 &&i<12){
+                    homeArrayList.add(autoLoad.webSites.get(j));
+                    j++;
+                } else if (i>11&&i<18) {
+                    homeArrayList.add(autoLoad.affiliates.get(k));
+                    k++;
                 }
-                else if(i>5 && i<12){
-                    homeArrayList.add(autoLoad.webSites.get(i));
-                    Log.d("users", String.valueOf(i));
-                }
-//                else if (i<18) {
-//                    homeArrayList.add(autoLoad.affiliates.get(i));
-//                }
 
             }
 
@@ -176,6 +176,5 @@ public class homes extends AppCompatActivity {
 
         }catch (Exception e){}
 
-        Log.d("users", String.valueOf(homeArrayList.size()));
     }
 }
